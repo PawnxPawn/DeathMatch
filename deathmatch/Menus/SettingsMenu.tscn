@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://0lj3qejewwsp"]
+
+[ext_resource type="Script" uid="uid://drpaxx3da40cr" path="res://Menus/settings_menu.gd" id="1_8x3wo"]
+[ext_resource type="Script" uid="uid://doa6b45eovwep" path="res://Menus/master_volume.gd" id="1_safvx"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8x3wo")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolume" type="VBoxContainer" parent="CenterContainer/VBoxContainer" node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("1_safvx")
+bus_name = "Master"
+volume_slider = NodePath("MasterSlider")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/MasterVolume"]
+layout_mode = 2
+text = "Main Volume"
+
+[node name="MasterSlider" type="HSlider" parent="CenterContainer/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="MusicVolume" type="VBoxContainer" parent="CenterContainer/VBoxContainer" node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("1_safvx")
+bus_name = "Music"
+volume_slider = NodePath("MusicSlider")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="SFXSlider" type="VBoxContainer" parent="CenterContainer/VBoxContainer" node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("1_safvx")
+bus_name = "SFX"
+volume_slider = NodePath("SFXSlider")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="CenterContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="ReturnButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/MasterVolume/MasterSlider" to="CenterContainer/VBoxContainer/MasterVolume" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/MusicVolume/MusicSlider" to="CenterContainer/VBoxContainer/MusicVolume" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/SFXSlider/SFXSlider" to="CenterContainer/VBoxContainer/SFXSlider" method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
