@@ -2,7 +2,6 @@ extends Control
 
 @export var main_menu: PackedScene
 @export var settings_menu: PackedScene
-@export var this_scene: PackedScene
 
 
 func _on_resume_button_pressed() -> void:

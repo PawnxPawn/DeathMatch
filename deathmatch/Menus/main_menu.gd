@@ -1,6 +1,5 @@
 extends Control
 
-@export var this_scene: PackedScene #Crude, but only way I know how to do this cleanly.
 @export var level_0: PackedScene
 @export var settings_menu: PackedScene
 
