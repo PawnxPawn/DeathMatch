@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://h4hs4rtdq0aa"]
+
+[ext_resource type="Texture2D" uid="uid://i1qkf3fowdox" path="res://Assets/Cards/Card_flip_sprite_sheet.png" id="3_ayre0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kc5m"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(2185, 20, 200, 440)
+
+[sub_resource type="Animation" id="Animation_0korm"]
+resource_name = "card_flip"
+length = 1.00001
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardTexture:texture:region")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0909091, 0, 0.0909091, 0.181818, 0.272846, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(2400, 0, 240, 480), Rect2(2160, 0, 240, 480), Rect2(1920, 0, 240, 480), Rect2(1680, 0, 240, 480), Rect2(1440, 0, 240, 480), Rect2(1200, 0, 240, 480), Rect2(720, 0, 240, 480), Rect2(480, 0, 240, 480), Rect2(240, 0, 240, 480), Rect2(0, 0, 240, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_ipob6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardTexture:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2185, 20, 200, 440)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ayre0"]
+_data = {
+&"RESET": SubResource("Animation_ipob6"),
+&"card_flip": SubResource("Animation_0korm")
+}
+
+[node name="Card" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_type_variation = &"FlatButton"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardTexture" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1kc5m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/CardTexture"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ayre0")
+}

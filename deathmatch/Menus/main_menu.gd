@@ -5,13 +5,12 @@ extends Control
 
 
 func _on_play_game_button_pressed() -> void:
-    get_tree().change_scene_to_packed(level_0)
-    
+	get_tree().change_scene_to_packed(level_0)
+	
 
 func _on_settings_button_pressed() -> void:
-    pass #TODO: Write logic to hide this and show settings menu
+	pass #TODO: Write logic to hide this and show settings menu
 
 
 func _on_exit_button_pressed() -> void:
-    get_tree().quit()
-
+	get_tree().quit()
