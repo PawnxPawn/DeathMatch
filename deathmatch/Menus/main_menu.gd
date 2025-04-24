@@ -21,5 +21,3 @@ func _on_settings_menu_return_control() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
-
-

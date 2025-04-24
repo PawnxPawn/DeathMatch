@@ -1,0 +1,205 @@
+[gd_scene load_steps=19 format=3 uid="uid://bt3bj86ej15ct"]
+
+[ext_resource type="Texture2D" uid="uid://cictsrdu383gw" path="res://Assets/Timer/Bomb_boom_sheet.png" id="1_2y2lb"]
+[ext_resource type="Script" uid="uid://tn8b6fn2byah" path="res://Game/GameTimer/bomb_timer.gd" id="1_eb28k"]
+[ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Game/Cards/texture_sprite_frames.gd" id="2_eb28k"]
+[ext_resource type="Texture2D" uid="uid://d4d1g012cggam" path="res://Assets/Timer/Bomb.png" id="2_nkf1j"]
+[ext_resource type="Texture2D" uid="uid://juwvslqdy5ne" path="res://Assets/Timer/Timer_fuse.png" id="3_nkf1j"]
+[ext_resource type="Texture2D" uid="uid://1m6ig53m0muf" path="res://Assets/Timer/Timer_fuse_burnt.png" id="5_nkf1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jo8o"]
+atlas = ExtResource("1_2y2lb")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkf1j"]
+atlas = ExtResource("2_nkf1j")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3616n"]
+atlas = ExtResource("1_2y2lb")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8488"]
+atlas = ExtResource("1_2y2lb")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgjdx"]
+atlas = ExtResource("1_2y2lb")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elhy6"]
+atlas = ExtResource("1_2y2lb")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmh2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkf1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jo8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3616n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8488")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgjdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elhy6")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjhja"]
+atlas = ExtResource("5_nkf1j")
+region = Rect2(111, 0, 475, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajfg3"]
+atlas = ExtResource("3_nkf1j")
+region = Rect2(111, 0, 475, 160)
+
+[sub_resource type="Animation" id="Animation_nkf1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BombAnimated:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explosion"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BombAnimated:frame_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BombAnimated:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_eb28k"]
+resource_name = "explode"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BombAnimated:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explosion"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BombAnimated:frame_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0344801, 0.0666667, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BombAnimated:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_timed_out"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nkf1j"]
+_data = {
+&"RESET": SubResource("Animation_nkf1j"),
+&"explode": SubResource("Animation_eb28k")
+}
+
+[node name="BombTimer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eb28k")
+timer_wait_time = 5.0
+
+[node name="BombAnimated" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_5jo8o")
+script = ExtResource("2_eb28k")
+sprite_frames = SubResource("SpriteFrames_nmh2o")
+current_animation = &"explosion"
+frame_index = 1
+metadata/_custom_type_script = "uid://d0mmq2inlb2s1"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BombAnimated"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = -5.0
+offset_right = 754.0
+offset_bottom = 155.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+texture_under = SubResource("AtlasTexture_wjhja")
+texture_progress = SubResource("AtlasTexture_ajfg3")
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nkf1j")
+}
+speed_scale = 0.75
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
