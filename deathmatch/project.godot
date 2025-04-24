@@ -20,6 +20,10 @@ config/icon="uid://b4jvdvcmjbamo"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Cards=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

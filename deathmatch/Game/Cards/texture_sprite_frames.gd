@@ -1,10 +1,12 @@
 @tool
 class_name TextureSpriteFrames extends TextureRect
 
+# Allows for sprite frames to be used in TextureRect
 @export var sprite_frames:SpriteFrames
 @export var current_animation:StringName = &"default"
 @export var frame_index:int = 0
 
+#Storage to make sure things haven't change
 var _last_frame_index:int = frame_index
 var _last_animation:StringName = current_animation
 
