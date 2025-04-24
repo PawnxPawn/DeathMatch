@@ -1,58 +1,127 @@
-[gd_scene load_steps=18 format=3 uid="uid://h4hs4rtdq0aa"]
+[gd_scene load_steps=55 format=3 uid="uid://h4hs4rtdq0aa"]
 
+[ext_resource type="Script" uid="uid://dqog5m8quisxg" path="res://Game/Cards/cardButton.gd" id="1_ayre0"]
 [ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Game/Cards/texture_sprite_frames.gd" id="2_0korm"]
 [ext_resource type="Texture2D" uid="uid://i1qkf3fowdox" path="res://Assets/Cards/Card_flip_sprite_sheet.png" id="3_ayre0"]
+[ext_resource type="Texture2D" uid="uid://yunlb1ghuwtx" path="res://Assets/Cards/Card_Icon.png" id="3_ipob6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fw56p"]
-atlas = ExtResource("3_ayre0")
-region = Rect2(2400, 0, 240, 480)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayre0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0korm"]
-atlas = ExtResource("3_ayre0")
-region = Rect2(0, 0, 240, 480)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av8u4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd0l4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vuycb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yviio"]
+
+[sub_resource type="Theme" id="Theme_gn8ke"]
+Button/colors/font_color = Color(0.87451, 0.87451, 0.87451, 0)
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 0)
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0.94902, 0)
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0.94902, 0)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/font_outline_color = Color(0, 0, 0, 0)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/styles/disabled = SubResource("StyleBoxEmpty_ayre0")
+Button/styles/focus = SubResource("StyleBoxEmpty_av8u4")
+Button/styles/hover = SubResource("StyleBoxEmpty_dd0l4")
+Button/styles/normal = SubResource("StyleBoxEmpty_vuycb")
+Button/styles/pressed = SubResource("StyleBoxEmpty_yviio")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipob6"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(240, 0, 240, 480)
+region = Rect2(0, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayre0"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(480, 0, 240, 480)
+region = Rect2(48, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_av8u4"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(720, 0, 240, 480)
+region = Rect2(96, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dd0l4"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(960, 0, 240, 480)
+region = Rect2(144, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vuycb"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(1200, 0, 240, 480)
+region = Rect2(192, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yviio"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(1440, 0, 240, 480)
+region = Rect2(240, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gn8ke"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(1680, 0, 240, 480)
+region = Rect2(288, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evl6l"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(1920, 0, 240, 480)
+region = Rect2(336, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0gw8"]
 atlas = ExtResource("3_ayre0")
-region = Rect2(2160, 0, 240, 480)
+region = Rect2(384, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw56p"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(432, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea5a1"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(480, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usca4"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(528, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooh42"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(576, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eekgc"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(624, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3npk1"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(672, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr4rr"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(720, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c8ty"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(768, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ka4"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(816, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72r0f"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(864, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmriu"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(912, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvwj8"]
+atlas = ExtResource("3_ayre0")
+region = Rect2(960, 0, 48, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jmd78"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0korm")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ipob6")
 }, {
@@ -82,66 +151,180 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fw56p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea5a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usca4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooh42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eekgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3npk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr4rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c8ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ka4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72r0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmriu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvwj8")
 }],
 "loop": true,
 "name": &"card_flip",
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_ipob6"]
-length = 0.700003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardTexture:current_animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"card_flip"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CardTexture:frame_index")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CardTexture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.333333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"flip_h_value"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AnimationPlayer:speed_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_j67gl"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(160, 640, 160, 160)
 
-[sub_resource type="Animation" id="Animation_ayre0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmd78"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(0, 0, 159.975, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5qfe"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sablr"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fshsu"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5opk"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(0, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovryv"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(160, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf17k"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(320, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4enn"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(480, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3rpe"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(0, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5isp"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(160, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmqyo"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(320, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj4fc"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(480, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxwju"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(0, 480, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rafgv"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(160, 480, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7w71"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(320, 480, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqbtm"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(480, 480, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhlsn"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(0, 640, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ea5a1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmd78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5qfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sablr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fshsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5opk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovryv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf17k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4enn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3rpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5isp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmqyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj4fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxwju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rafgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7w71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqbtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhlsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j67gl")
+}],
+"loop": true,
+"name": &"icons",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ipob6"]
 resource_name = "flip_card"
 length = 0.700003
 tracks/0/type = "value"
@@ -166,62 +349,153 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CardTexture")
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardTexture/FaceTexture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"flip_h_value"
+"method": &"visibility_value"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardTexture/FaceTexture:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 38), Vector2(2, 38), Vector2(5, 38), Vector2(8, 38), Vector2(11, 38), Vector2(19, 38), Vector2(24, 38), Vector2(29, 38), Vector2(35, 38), Vector2(38, 38), Vector2(38, 38)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CardTexture/FaceTexture:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(25, 29), Vector2(23, 29), Vector2(18, 29), Vector2(16, 29), Vector2(17, 29), Vector2(11, 29), Vector2(11, 29), Vector2(9, 29), Vector2(6, 29), Vector2(4, 29), Vector2(3, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_ayre0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardTexture:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"card_flip"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardTexture:frame_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardTexture/FaceTexture:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, 38)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/3/path = NodePath("CardTexture/FaceTexture:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0333333),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.5]
+"values": [Vector2(4, 29)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ayre0"]
 _data = {
-&"RESET": SubResource("Animation_ipob6"),
-&"flip_card": SubResource("Animation_ayre0")
+&"RESET": SubResource("Animation_ayre0"),
+&"flip_card": SubResource("Animation_ipob6")
 }
 
 [node name="Card" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 52.0
+offset_bottom = 97.0
+theme = SubResource("Theme_gn8ke")
 theme_type_variation = &"FlatButton"
+script = ExtResource("1_ayre0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CardTexture" type="TextureRect" parent="VBoxContainer"]
+[node name="CardTexture" type="TextureRect" parent="."]
+clip_children = 2
 layout_mode = 2
-texture = SubResource("AtlasTexture_fw56p")
+offset_right = 48.0
+offset_bottom = 96.0
+texture = SubResource("AtlasTexture_ipob6")
 script = ExtResource("2_0korm")
 sprite_frames = SubResource("SpriteFrames_jmd78")
 current_animation = &"card_flip"
-frame_index = 10
+frame_index = 1
+
+[node name="FaceTexture" type="TextureRect" parent="CardTexture"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 29.0
+offset_right = 42.0
+offset_bottom = 67.0
+texture = SubResource("AtlasTexture_j67gl")
+expand_mode = 1
+script = ExtResource("2_0korm")
+sprite_frames = SubResource("SpriteFrames_ea5a1")
+current_animation = &"icons"
+frame_index = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../VBoxContainer")
 libraries = {
 &"": SubResource("AnimationLibrary_ayre0")
 }
-speed_scale = 0.5
+movie_quit_on_finish = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
