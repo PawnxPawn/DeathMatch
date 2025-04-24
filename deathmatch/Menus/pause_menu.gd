@@ -5,8 +5,13 @@ extends Control
 @export var pause_menu_control: Control
 
 
+func _input(_event: InputEvent) -> void:
+	get_tree().paused = true
+	pause_menu_control.visible = true
+
 func _on_resume_button_pressed() -> void:
 	pause_menu_control.visible = false
+	get_tree().paused = false
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_packed(main_menu)
