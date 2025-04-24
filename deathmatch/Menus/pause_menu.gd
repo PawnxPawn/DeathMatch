@@ -5,9 +5,17 @@ extends Control
 @export var pause_menu_control: Control
 
 
+func _ready() -> void:
+	pause_menu_control.visible = false
+
 func _input(_event: InputEvent) -> void:
-	get_tree().paused = true
-	pause_menu_control.visible = true
+	if (Input.is_action_just_pressed("Pause")):
+		print("Pausing")
+		toggle_pause()
+
+func toggle_pause() -> void:
+	get_tree().paused = !get_tree().paused
+	pause_menu_control.visible = !pause_menu_control.visible
 
 func _on_resume_button_pressed() -> void:
 	pause_menu_control.visible = false

@@ -1,12 +1,12 @@
 extends Control
 
-@export var level_0: PackedScene
+var level_0 = "res://Game/Game.tscn" #Fixes a bug. I hate it here.
 @export var settings_menu: Control
 @export var main_menu_control: Control
 
 
 func _on_play_game_button_pressed() -> void:
-	get_tree().change_scene_to_packed(level_0)
+	get_tree().change_scene_to_file(level_0)
 	
 
 func show_hide() -> void:
