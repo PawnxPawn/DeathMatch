@@ -1,4 +1,6 @@
 extends Control
 
+signal return_control
+
 func _on_return_button_pressed() -> void:
-	pass #TODO: Write logic to hide this.
+	return_control.emit()
