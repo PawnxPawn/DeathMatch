@@ -1,12 +1,120 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkwn2t17jhet2"]
+[gd_scene load_steps=4 format=3 uid="uid://bkwn2t17jhet2"]
 
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="1_hqwdr"]
+[ext_resource type="Texture2D" uid="uid://b64bo1wxu1qph" path="res://Assets/Table.png" id="2_vrr3t"]
+[ext_resource type="PackedScene" uid="uid://h4hs4rtdq0aa" path="res://Game/Cards/card.tscn" id="3_iv3md"]
 
 [node name="Game" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PlayArea" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_hqwdr")]
+[node name="Container" type="Control" parent="PlayArea"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="PlayArea/Container"]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_vrr3t")
+expand_mode = 1
+
+[node name="CardField" type="Control" parent="PlayArea"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 216.0
+offset_top = 587.0
+offset_right = 216.0
+offset_bottom = 587.0
+scale = Vector2(0.865, 0.865)
+
+[node name="Card Area" type="GridContainer" parent="PlayArea/CardField"]
+layout_mode = 0
+offset_top = -582.0
+offset_right = 728.0
+offset_bottom = -194.0
+theme_override_constants/h_separation = 104
+theme_override_constants/v_separation = 194
+columns = 8
+
+[node name="Card" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card2" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card3" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card4" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card5" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card6" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card7" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card8" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card9" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card10" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card11" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card12" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card13" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card14" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card15" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card16" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card17" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card18" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card19" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card20" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card21" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card22" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card23" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="Card24" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayArea"]
+
+[node name="PauseMenu" parent="PlayArea/CanvasLayer" instance=ExtResource("1_hqwdr")]
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
