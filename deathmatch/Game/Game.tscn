@@ -116,6 +116,7 @@ layout_mode = 2
 [node name="PauseLayer" type="CanvasLayer" parent="PlayArea"]
 
 [node name="PauseMenu" parent="PlayArea/PauseLayer" instance=ExtResource("1_hqwdr")]
+[node name="PauseMenu" parent="PlayArea/CanvasLayer" instance=ExtResource("1_hqwdr")]
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
