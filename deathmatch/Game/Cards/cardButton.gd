@@ -15,7 +15,7 @@ var is_flipped:bool = false
 func _ready() -> void:
 	face_texture.frame_index = icon_id
 
-func _on_pressed() -> void:
+func _on_clicked() -> void:
 	# Can only be flipped once.
 	if not is_flipped and not animation_player.is_playing():
 		is_flipped = true
