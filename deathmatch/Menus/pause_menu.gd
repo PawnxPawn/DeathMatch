@@ -10,8 +10,10 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if (Input.is_action_just_pressed("Pause")):
-		print("Pausing")
-		toggle_pause()
+		if (get_tree().paused && settings_menu.visible):
+			show_hide()
+		else:
+			toggle_pause()
 
 func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
