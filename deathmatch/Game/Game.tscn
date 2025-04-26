@@ -113,14 +113,13 @@ layout_mode = 2
 [node name="CardR3C8" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="PauseLayer" type="CanvasLayer" parent="PlayArea"]
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 5
 
-[node name="PauseMenu" parent="PlayArea/PauseLayer" instance=ExtResource("1_hqwdr")
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("1_hqwdr")]
+mouse_filter = 2
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
