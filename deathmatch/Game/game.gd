@@ -33,7 +33,6 @@ func _initialize_cards() -> void:
 		var randomized_value = _get_value_from_pool(icon_pool)
 		value.append(randomized_value)
 		value.append(randomized_value)
-	print(value)
 	
 	# Assign cards a ID
 	for child in card_area.get_children():

@@ -33,4 +33,5 @@ var high_score:int
 ##Game Won events
 func game_won() -> void:
 	high_score = score
+	print(high_score)
 	pass
