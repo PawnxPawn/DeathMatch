@@ -194,6 +194,7 @@ texture_under = SubResource("AtlasTexture_wjhja")
 texture_progress = SubResource("AtlasTexture_ajfg3")
 
 [node name="GameTimer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
