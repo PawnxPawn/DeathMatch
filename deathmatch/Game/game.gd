@@ -6,18 +6,17 @@ extends Node2D
 
 @export var score = 100
 
-var found_pairs: Array[Button]
-var card_compare: Array[Button]
-var seen_cards: Array[Button]
-
-
-# TODO: Lose health when two cards don't match
-# TODO: Give Score When cards match
-
-# NOTE: Possibly need to update cards to have a bool of "is_playable" so we can set
-# diffrent amount of cards on the field.
+var cards_at_play:Array[Button]
+var found_pairs:Array[Button]
+var card_compare:Array[Button]
+var seen_cards:Array[Button]
 
 func _ready() -> void:
+	_initialize_cards()
+
+
+#Initialize the cards icons and values
+func _initialize_cards() -> void:
 	# Connect all cards card_flipped signal
 	for child in card_area.get_children():
 		child.card_flipped.connect(_check_card,)
@@ -38,7 +37,11 @@ func _ready() -> void:
 	
 	# Assign cards a ID
 	for child in card_area.get_children():
-		child.update_icon_id(_get_value_from_pool(value))
+		if child.should_init:
+			cards_at_play.append(child)
+			child.update_icon_id(_get_value_from_pool(value))
+		else:
+			child.disable_card()
 
 
 # Fetch and remove a value from the pool
@@ -51,7 +54,7 @@ func _get_value_from_pool(pool: Array[int]) -> int:
 
 # Keep list of completed 
 func _enable_disable_current_cards(card:Button) -> void:
-	if found_pairs.find(card) == -1: 
+	if found_pairs.find(card) == -1 and card.should_init: 
 		card.disabled = !card.disabled
 
 
@@ -85,6 +88,7 @@ func _on_delay_timer_timeout() -> void:
 	else:
 		# Checks if cards have been seen if not adds them to an array
 		# else takes a life
+		GameManager.chain_multiplier = 1
 		var has_seen_card:bool = false
 		for i in card_compare:
 			i.flip_card_back()
@@ -98,8 +102,14 @@ func _on_delay_timer_timeout() -> void:
 	
 	card_compare.clear()
 	
+	#Re-Enables active cards
 	for child in card_area.get_children():
 		_enable_disable_current_cards(child)
 	
+	if cards_at_play.size() == found_pairs.size():
+		GameManager.game_won()
+		print("Game Won")
+	
 	print("Health: %d" % GameManager.health)
 	print("Score: %d" % GameManager.score)
+	print("Multiplier: %d" % GameManager.chain_multiplier)

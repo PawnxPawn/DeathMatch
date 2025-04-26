@@ -6,6 +6,8 @@ signal card_flipped(Button)
 
 ## Frame to use for the FaceTexture Node
 @export var icon_id:int = 0
+## Initialize card?
+@export var should_init:bool = true
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var face_texture: TextureSpriteFrames = $CardTexture/FaceTexture
