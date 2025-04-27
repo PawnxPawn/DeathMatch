@@ -5,6 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efy7n"]
 atlas = ExtResource("1_aq2ra")
+region = Rect2(0, 14, 276, 624)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8hsu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -17,10 +18,11 @@ script = ExtResource("1_efy7n")
 [node name="HandLifeCounter" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 1.0
-offset_top = 164.0
-offset_right = 365.0
-offset_bottom = 788.0
+offset_left = 894.0
+offset_top = 253.0
+offset_right = 1331.0
+offset_bottom = 893.0
+scale = Vector2(0.6, 0.6)
 texture = SubResource("AtlasTexture_efy7n")
 
 [node name="HandLifeCounterBg" type="PanelContainer" parent="HandLifeCounter"]
