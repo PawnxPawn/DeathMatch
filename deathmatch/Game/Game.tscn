@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkwn2t17jhet2"]
+[gd_scene load_steps=6 format=3 uid="uid://bkwn2t17jhet2"]
 
 [ext_resource type="Script" uid="uid://cjakmqhb0qw3n" path="res://Game/game.gd" id="1_37esa"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="1_hqwdr"]
 [ext_resource type="Texture2D" uid="uid://b64bo1wxu1qph" path="res://Assets/Table.png" id="2_vrr3t"]
 [ext_resource type="PackedScene" uid="uid://h4hs4rtdq0aa" path="res://Game/Cards/card.tscn" id="3_iv3md"]
+[ext_resource type="PackedScene" uid="uid://clmuqidjeeljp" path="res://Menus/Hud.tscn" id="5_jxerj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_37esa")
@@ -117,7 +118,12 @@ layout_mode = 2
 layer = 5
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("1_hqwdr")]
+visible = false
 mouse_filter = 2
+
+[node name="Hud Layer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="Hud Layer" instance=ExtResource("5_jxerj")]
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
