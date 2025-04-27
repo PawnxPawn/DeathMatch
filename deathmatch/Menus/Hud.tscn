@@ -18,9 +18,9 @@ script = ExtResource("1_efy7n")
 [node name="HandLifeCounter" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-offset_top = 28.0
+offset_top = 56.0
 offset_right = 364.0
-offset_bottom = 652.0
+offset_bottom = 680.0
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_efy7n")
 
@@ -52,5 +52,14 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="Timer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Multiplier" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="MultiplierTitleLabel" type="Label" parent="PanelContainer/VBoxContainer/Multiplier"]
+layout_mode = 2
+text = "Multiplier:"
+
+[node name="MultiplierLabel" type="Label" parent="PanelContainer/VBoxContainer/Multiplier"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x1"
