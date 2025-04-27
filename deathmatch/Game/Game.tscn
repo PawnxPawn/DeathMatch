@@ -118,6 +118,7 @@ layout_mode = 2
 layer = 5
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("1_hqwdr")]
+visible = false
 mouse_filter = 2
 
 [node name="Hud Layer" type="CanvasLayer" parent="."]

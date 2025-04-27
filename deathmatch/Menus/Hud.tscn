@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://clmuqidjeeljp"]
 
-[ext_resource type="Texture2D" uid="uid://cw15txfm2b3va" path="res://Assets/Health_Hands/Hand_set.png" id="1_aq2ra"]
+[ext_resource type="Texture2D" uid="uid://cefhpspubxle2" path="res://Assets/Health_Hands/Hand_set.png" id="1_aq2ra"]
 [ext_resource type="Script" uid="uid://hjy2dy8b5e4o" path="res://Menus/hud.gd" id="1_efy7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efy7n"]
 atlas = ExtResource("1_aq2ra")
-region = Rect2(569, 54, 249, 261)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8hsu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

@@ -17,14 +17,14 @@ Rect2(0, 14, 276, 624)]
 const health_remaining_bg_size: Array[Vector2] = [Vector2(408, 590), Vector2(408, 644)]
 
 func _ready() -> void:
-    GameManager.updated_values.connect(update_hud)
-    update_hud(GameManager.health, GameManager.score, GameManager.chain_multiplier)
+	GameManager.updated_values.connect(update_hud)
+	update_hud(GameManager.health, GameManager.score, GameManager.chain_multiplier)
 
 func update_hud(health: int, score: int, chain_multiplier: int) -> void:
-    hand_life_counter.texture.region = health_remaining[health]
-    if (health == 5):
-        hand_life_counter_bg.size = health_remaining_bg_size[1]
-    else:
-        hand_life_counter_bg.size = health_remaining_bg_size[0]
-    score_label.text = str(score)
-    multiplier_label.text = "x {0}".format([str(chain_multiplier)])
+	hand_life_counter.texture.region = health_remaining[health]
+	if (health == 5):
+		hand_life_counter_bg.size = health_remaining_bg_size[1]
+	else:
+		hand_life_counter_bg.size = health_remaining_bg_size[0]
+	score_label.text = str(score)
+	multiplier_label.text = "x {0}".format([str(chain_multiplier)])
