@@ -1,7 +1,7 @@
 extends Node
 
 signal dead
-
+signal updated_values(health_update: int, score_update: int)
 
 var health: int = 5:
 	set (value):
@@ -10,6 +10,7 @@ var health: int = 5:
 			health = 0
 			dead.emit()
 			print("Game Over")
+		updated_values.emit(health, score)
 	get:
 		return health
 
@@ -17,6 +18,7 @@ var score: int = 0:
 	set (value):
 		score = value * chain_multiplier
 		chain_multiplier += 1
+		updated_values.emit(health, score)
 	get:
 		return score
 
