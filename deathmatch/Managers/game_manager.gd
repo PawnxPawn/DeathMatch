@@ -3,6 +3,9 @@ extends Node
 signal dead
 signal updated_values(health_update: int, score_update: int, multiplier_update: int)
 
+var knife_cursor = load("res://Assets/Cursor/selector_sword_crop.png")
+var standard_cursor = load("res://Assets/Cursor/Cursor.png")
+
 var health: int = 5:
 	set (value):
 		health = value
@@ -38,3 +41,10 @@ func game_won() -> void:
 	high_score = score
 	print(high_score)
 	pass
+
+
+func change_cursor(selector: bool) -> void:
+	if (selector):
+		Input.set_custom_mouse_cursor(knife_cursor)
+	else:
+		Input.set_custom_mouse_cursor(standard_cursor)
