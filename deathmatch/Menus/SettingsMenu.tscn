@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://0lj3qejewwsp"]
+[gd_scene load_steps=4 format=3 uid="uid://0lj3qejewwsp"]
 
 [ext_resource type="Script" uid="uid://drpaxx3da40cr" path="res://Menus/settings_menu.gd" id="1_8x3wo"]
 [ext_resource type="Script" uid="uid://doa6b45eovwep" path="res://Menus/master_volume.gd" id="1_safvx"]
+[ext_resource type="FontFile" uid="uid://clmcvx0sjqi8x" path="res://Assets/Font/times-new-pixel.otf" id="2_6r630"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -29,6 +30,7 @@ layout_mode = 2
 
 [node name="SettingsLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -41,6 +43,7 @@ volume_slider = NodePath("MasterSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/MasterVolume"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Main Volume"
 
 [node name="MasterSlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/MasterVolume"]
@@ -57,6 +60,7 @@ volume_slider = NodePath("MusicSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/MusicVolume"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/MusicVolume"]
@@ -73,6 +77,7 @@ volume_slider = NodePath("SFXSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/SFXSlider"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/SFXSlider"]
@@ -83,9 +88,12 @@ step = 0.001
 
 [node name="ReturnButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Return"
 
 [connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/MasterVolume/MasterSlider" to="PanelContainer/CenterContainer/VBoxContainer/MasterVolume" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/MusicVolume/MusicSlider" to="PanelContainer/CenterContainer/VBoxContainer/MusicVolume" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/SFXSlider/SFXSlider" to="PanelContainer/CenterContainer/VBoxContainer/SFXSlider" method="_on_volume_slider_value_changed"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
