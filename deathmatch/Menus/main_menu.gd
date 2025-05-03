@@ -4,7 +4,6 @@ var level_0 = "res://Game/Game.tscn" #Fixes a bug. I hate it here.
 @export var settings_menu: Control
 @export var main_menu_control: Control
 
-
 func _on_play_game_button_pressed() -> void:
 	get_tree().change_scene_to_file(level_0)
 	
@@ -21,3 +20,21 @@ func _on_settings_menu_return_control() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_play_game_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
+
+func _on_play_game_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)
+
+func _on_settings_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
+
+func _on_settings_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)
+
+func _on_exit_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
+
+func _on_exit_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)

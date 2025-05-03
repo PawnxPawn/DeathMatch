@@ -4,7 +4,6 @@ extends Control
 @export var settings_menu: Control
 @export var pause_menu_control: Control
 
-
 func _ready() -> void:
 	pause_menu_control.visible = false
 
@@ -40,10 +39,26 @@ func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 	
 
+func _on_resume_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
 
+func _on_resume_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)
 
+func _on_main_menu_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
 
+func _on_main_menu_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)
 
+func _on_settings_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
 
+func _on_settings_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)
 
-	
+func _on_exit_button_mouse_entered() -> void:
+	GameManager.change_cursor(true)
+
+func _on_exit_button_mouse_exited() -> void:
+	GameManager.change_cursor(false)
