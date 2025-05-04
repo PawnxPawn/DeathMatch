@@ -1,8 +1,15 @@
 extends Control
 
-var level_0 = "res://Game/Game.tscn" #Fixes a bug. I hate it here.
 @export var settings_menu: Control
 @export var main_menu_control: Control
+
+@export_category("Selector")
+@export var selector: PanelContainer
+@export var selector_offset: Vector2
+
+@onready var level_0 = "res://Game/Game.tscn" #Fixes a bug. I hate it here. (I put on a onready to fix it PwnxPwn)
+@onready var vbox_container: VBoxContainer = %MenuContainer
+
 
 func _on_play_game_button_pressed() -> void:
 	get_tree().change_scene_to_file(level_0)
@@ -12,29 +19,60 @@ func show_hide() -> void:
 	main_menu_control.visible = !main_menu_control.visible
 	settings_menu.visible = !settings_menu.visible
 
+
+func _on_hover_set_selector() -> void:
+	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
+	var node: Node
+	
+	for child in %MenuContainer.get_children():
+		if child is Button and child.get_global_rect().has_point(mouse_pos):
+			node = child
+			break
+	
+	var node_center_point: Vector2 = node.get_global_rect().position
+	node_center_point.x -= node.get_global_rect().size.x
+
+
+	selector.set_selector_position(node_center_point, selector_offset)
+	selector.show()
+
+
+
+
 func _on_settings_button_pressed() -> void:
 	show_hide()
+
 
 func _on_settings_menu_return_control() -> void:
 	show_hide()
 
+
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
+
 func _on_play_game_button_mouse_entered() -> void:
-	GameManager.change_cursor(true)
+	_on_hover_set_selector()
+	pass
+
 
 func _on_play_game_button_mouse_exited() -> void:
-	GameManager.change_cursor(false)
+	pass
+
 
 func _on_settings_button_mouse_entered() -> void:
-	GameManager.change_cursor(true)
+	_on_hover_set_selector()
+	pass
+
 
 func _on_settings_button_mouse_exited() -> void:
-	GameManager.change_cursor(false)
+	pass
+
 
 func _on_exit_button_mouse_entered() -> void:
-	GameManager.change_cursor(true)
+	_on_hover_set_selector()
+	pass
+
 
 func _on_exit_button_mouse_exited() -> void:
-	GameManager.change_cursor(false)
+	pass
