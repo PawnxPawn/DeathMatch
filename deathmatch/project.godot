@@ -19,12 +19,13 @@ config/icon="uid://b4jvdvcmjbamo"
 
 [autoload]
 
-GameManager="*res://Managers/GameManager.tscn"
+GameManager="*res://Scripts/Managers/GameManager.tscn"
 
 [display]
 
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://btp4vcdiv48ma"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [editor]
 

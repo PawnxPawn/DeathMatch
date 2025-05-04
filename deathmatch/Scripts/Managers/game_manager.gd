@@ -36,6 +36,13 @@ var chain_multiplier: int = 1:
 
 var high_score:int
 
+
+func _ready() -> void:
+	# Set the default cursor
+	Input.set_custom_mouse_cursor(standard_cursor, Input.CURSOR_ARROW, Vector2(12, 9))
+
+
+
 ##Game Won events
 func game_won() -> void:
 	high_score = score
@@ -43,8 +50,8 @@ func game_won() -> void:
 	pass
 
 
-func change_cursor(selector: bool) -> void:
-	if (selector):
-		Input.set_custom_mouse_cursor(knife_cursor)
-	else:
-		Input.set_custom_mouse_cursor(standard_cursor)
+# func change_cursor(selector: bool) -> void:
+# 	if (selector):
+# 		Input.set_custom_mouse_cursor(knife_cursor)
+# 	else:
+# 		Input.set_custom_mouse_cursor(standard_cursor)
