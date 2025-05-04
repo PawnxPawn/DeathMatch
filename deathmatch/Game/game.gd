@@ -13,7 +13,7 @@ var seen_cards:Array[Button]
 
 func _ready() -> void:
 	_initialize_cards()
-
+	GameManager.dead.connect(lose)
 
 #Initialize the cards icons and values
 func _initialize_cards() -> void:
@@ -108,7 +108,14 @@ func _on_delay_timer_timeout() -> void:
 	if cards_at_play.size() == found_pairs.size():
 		GameManager.game_won()
 		print("Game Won")
+		win()
 	
 	print("Health: %d" % GameManager.health)
 	print("Score: %d" % GameManager.score)
 	print("Multiplier: %d" % GameManager.chain_multiplier)
+
+func lose() -> void:
+	get_tree().change_scene_to_file("res://Game/Win+Lose Screens/LoseScreen.tscn")
+
+func win() -> void:
+	get_tree().change_scene_to_file("res://Game/Win+Lose Screens/WinScreen.tscn")
