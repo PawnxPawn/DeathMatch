@@ -40,6 +40,7 @@ func _on_hover_set_selector() -> void:
 
 
 func _on_settings_button_pressed() -> void:
+	selector.hide()
 	show_hide()
 
 
