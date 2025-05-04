@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://bt3bj86ej15ct"]
+[gd_scene load_steps=21 format=3 uid="uid://bt3bj86ej15ct"]
 
 [ext_resource type="Texture2D" uid="uid://cictsrdu383gw" path="res://Assets/Timer/Bomb_boom_sheet.png" id="1_2y2lb"]
 [ext_resource type="Script" uid="uid://tn8b6fn2byah" path="res://Game/GameTimer/bomb_timer.gd" id="1_eb28k"]
-[ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Game/Cards/texture_sprite_frames.gd" id="2_eb28k"]
+[ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Scripts/TextureSpritesFrames/texture_sprite_frames.gd" id="2_eb28k"]
 [ext_resource type="Texture2D" uid="uid://d4d1g012cggam" path="res://Assets/Timer/Bomb.png" id="2_nkf1j"]
 [ext_resource type="Texture2D" uid="uid://juwvslqdy5ne" path="res://Assets/Timer/Timer_fuse.png" id="3_nkf1j"]
 [ext_resource type="Texture2D" uid="uid://1m6ig53m0muf" path="res://Assets/Timer/Timer_fuse_burnt.png" id="5_nkf1j"]
+[ext_resource type="Texture2D" uid="uid://be0ckh312gvp0" path="res://Assets/Timer/spark.png" id="7_wjhja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jo8o"]
 atlas = ExtResource("1_2y2lb")
@@ -59,11 +60,18 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjhja"]
 atlas = ExtResource("5_nkf1j")
-region = Rect2(111, 0, 475, 160)
+region = Rect2(124, 0, 461, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajfg3"]
 atlas = ExtResource("3_nkf1j")
-region = Rect2(111, 0, 475, 160)
+region = Rect2(148.408, 0, 457.736, 160)
+filter_clip = true
+
+[sub_resource type="Curve2D" id="Curve2D_p60ow"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 21, 39, 0, 0, 0, 0, 38, 28, 0, 0, 0, 0, 57, 23, 0, 0, 0, 0, 72, 23, 0, 0, 0, 0, 83, 28, 0, 0, 0, 0, 98, 35, 0, 0, 0, 0, 106, 46, 0, 0, 0, 0, 110, 59, 0, 0, 0, 0, 114, 72, 0, 0, 0, 0, 118, 83, 0, 0, 0, 0, 124, 102, 0, 0, 0, 0, 129, 108, 0, 0, 0, 0, 134, 113, 0, 0, 0, 0, 138, 117, 0, 0, 0, 0, 143, 120, 0, 0, 0, 0, 148, 122, 0, 0, 0, 0, 152, 122, 0, 0, 0, 0, 155, 123, 0, 0, 0, 0, 164, 122, 0, 0, 0, 0, 172, 121, 0, 0, 0, 0, 178, 117, 0, 0, 0, 0, 183, 111, 0, 0, 0, 0, 188, 106, 0, 0, 0, 0, 192, 100, 0, 0, 0, 0, 194, 95, 0, 0, 0, 0, 197, 86, 0, 0, 0, 0, 200, 79, 0, 0, 0, 0, 202, 70, 0, 0, 0, 0, 204, 63, 0, 0, 0, 0, 206, 54, 0, 0, 0, 0, 208, 49, 0, 0, 0, 0, 210, 44, 0, 0, 0, 0, 215, 38, 0, 0, 0, 0, 221, 33, 0, 0, 0, 0, 231, 28, 0, 0, 0, 0, 240, 24, 0, 0, 0, 0, 246, 22, 0, 0, 0, 0, 250, 22, 0, 0, 0, 0, 256, 22, 0, 0, 0, 0, 264, 22, 0, 0, 0, 0, 270, 23, 0, 0, 0, 0, 282, 28, 0, 0, 0, 0, 287, 33, 0, 0, 0, 0, 297, 37, 0, 0, 0, 0, 301, 44, 0, 0, 0, 0, 306, 53, 0, 0, 0, 0, 309, 62, 0, 0, 0, 0, 312, 74, 0, 0, 0, 0, 315, 81, 0, 0, 0, 0, 318, 90, 0, 0, 0, 0, 320, 98, 0, 0, 0, 0, 324, 105, 0, 0, 0, 0, 327, 109, 0, 0, 0, 0, 333, 114, 0, 0, 0, 0, 341, 120, 0, 0, 0, 0, 352, 123, 0, 0, 0, 0, 361, 124, 0, 0, 0, 0, 370, 122, 0, 0, 0, 0, 375, 120, 0, 0, 0, 0, 379, 114, 0, 0, 0, 0, 386, 106, 0, 0, 0, 0, 392, 96, 0, 0, 0, 0, 397, 89, 0, 0, 0, 0, 400, 78, 0, 0, 0, 0, 404, 63, 0, 0, 0, 0, 408, 54, 0, 0, 0, 0, 412, 43, 0, 0, 0, 0, 416, 37, 0, 0, 0, 0, 425, 31, 0, 0, 0, 0, 438, 25, 0, 0, 0, 0, 449, 22, 0, 0, 0, 0, 458, 22, 0, 0, 0, 0, 464, 22, 0, 0, 0, 0, 469, 22)
+}
+point_count = 74
 
 [sub_resource type="Animation" id="Animation_nkf1j"]
 length = 0.001
@@ -181,17 +189,44 @@ current_animation = &"explosion"
 frame_index = 1
 metadata/_custom_type_script = "uid://d0mmq2inlb2s1"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="BombAnimated"]
+[node name="FuseTimer" type="TextureProgressBar" parent="BombAnimated"]
+unique_name_in_owner = true
+z_index = -1
 layout_mode = 0
-offset_left = 114.0
-offset_top = -5.0
-offset_right = 754.0
-offset_bottom = 155.0
+offset_left = 118.0
+offset_top = 5.0
+offset_right = 579.0
+offset_bottom = 165.0
 max_value = 1.0
 step = 0.001
-value = 1.0
+value = 0.645
 texture_under = SubResource("AtlasTexture_wjhja")
 texture_progress = SubResource("AtlasTexture_ajfg3")
+
+[node name="Path2D" type="Path2D" parent="BombAnimated/FuseTimer"]
+position = Vector2(-14, 0)
+curve = SubResource("Curve2D_p60ow")
+
+[node name="SparkFusePath" type="PathFollow2D" parent="BombAnimated/FuseTimer/Path2D"]
+unique_name_in_owner = true
+position = Vector2(469, 22)
+progress = 696.663
+loop = false
+
+[node name="Spark" type="TextureRect" parent="BombAnimated/FuseTimer/Path2D/SparkFusePath"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_wjhja")
+expand_mode = 1
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 1.5
