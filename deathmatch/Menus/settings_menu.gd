@@ -3,11 +3,15 @@ extends Control
 @export_category("Selector")
 @export var selector: PanelContainer
 @export var selector_offset: Vector2
+@export var volume_sliders: Dictionary[String, HSlider]
 
 signal return_control
 
 func _on_return_button_pressed() -> void:
 	selector.hide()
+	
+	for key in volume_sliders:
+		ConfigFileHandler.save_audio_settings("audio", key, volume_sliders[key].value)	
 	return_control.emit()
 
 

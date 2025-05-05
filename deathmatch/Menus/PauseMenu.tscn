@@ -86,10 +86,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wpn1c")
 text = "Exit"
 
-[node name="SettingsMenu" parent="." instance=ExtResource("2_o0cs5")]
+[node name="SettingsMenu" parent="." node_paths=PackedStringArray("volume_sliders") instance=ExtResource("2_o0cs5")]
 process_mode = 3
 visible = false
 layout_mode = 1
+volume_sliders = {
+"master_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider"),
+"music_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider")
+}
 
 [node name="Selector" parent="." instance=ExtResource("5_t2718")]
 visible = false
