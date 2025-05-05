@@ -45,11 +45,13 @@ _data = {
 [node name="Selector" type="PanelContainer"]
 offset_right = 128.0
 offset_bottom = 26.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2ohju")
 script = ExtResource("2_2ohju")
 
 [node name="SelectorIcon" type="TextureRect" parent="."]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_lf7n7")
 flip_v = true
 
