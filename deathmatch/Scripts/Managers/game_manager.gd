@@ -42,10 +42,16 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(standard_cursor, Input.CURSOR_ARROW, Vector2(12, 9))
 
 
+func reset_game() -> void:
+	health = 5
+	score = 0
+	chain_multiplier = 1
+
+
 
 ##Game Won events
 func game_won() -> void:
-	high_score = score
+	high_score = score if score > high_score else high_score
 	print(high_score)
 	pass
 

@@ -408,6 +408,7 @@ _data = {
 }
 
 [node name="Card" type="Button" groups=["Cards"]]
+custom_minimum_size = Vector2(104, 194)
 offset_right = 104.0
 offset_bottom = 194.0
 theme = SubResource("Theme_gn8ke")

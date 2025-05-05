@@ -1,10 +1,14 @@
 extends Node2D
 
-@onready var card_area: GridContainer = $"PlayArea/CardField/Card Area"
-@onready var card_ref: Button = $"PlayArea/CardField/Card Area/CardR1C1" # Should get this info a diffrent way
+@onready var card_area: GridContainer = %CardArea
+@onready var card_ref: Button = %"CardArea/CardR1C1" # Should get this info a diffrent way
 @onready var delay_timer: Timer = $DelayTimer
 
 @export var score = 100
+
+@export_category("Selector")
+@export var selector: PanelContainer
+@export var selector_offset: Vector2
 
 var cards_at_play:Array[Button]
 var found_pairs:Array[Button]
@@ -14,12 +18,16 @@ var seen_cards:Array[Button]
 func _ready() -> void:
 	_initialize_cards()
 	GameManager.dead.connect(lose)
+	get_tree().paused = false
+	GameManager.reset_game()
 
 #Initialize the cards icons and values
 func _initialize_cards() -> void:
 	# Connect all cards card_flipped signal
 	for child in card_area.get_children():
-		child.card_flipped.connect(_check_card,)
+		child.card_flipped.connect(_check_card)
+		child.mouse_entered.connect(_on_mouse_entered)
+		child.mouse_exited.connect(_on_mouse_exited)
 	
 	# Pool of possible card IDs
 	var value: Array[int] = []
@@ -114,8 +122,39 @@ func _on_delay_timer_timeout() -> void:
 	print("Score: %d" % GameManager.score)
 	print("Multiplier: %d" % GameManager.chain_multiplier)
 
+
+func _on_mouse_entered() -> void:
+	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
+	var node: Node
+
+	for child in card_area.get_children():
+		
+		if child is Button and child.get_global_rect().has_point(mouse_pos) and not child.is_flipped:
+			node = child
+			break
+
+	
+	if node == null: return
+
+	print(node.name)
+
+	var node_center_point: Vector2 = node.get_global_rect().position
+	node_center_point.x -= node.get_global_rect().size.x / 2.0
+	node_center_point.y += node.get_global_rect().size.y / 2.0
+
+
+	selector.set_selector_position(node_center_point, selector_offset)
+	selector.show()
+
+
+func _on_mouse_exited() -> void:
+	#selector.hide()
+	pass
+
+
 func lose() -> void:
 	get_tree().change_scene_to_file("res://Game/Win+Lose Screens/LoseScreen.tscn")
+
 
 func win() -> void:
 	get_tree().change_scene_to_file("res://Game/Win+Lose Screens/WinScreen.tscn")

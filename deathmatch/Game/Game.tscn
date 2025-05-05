@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkwn2t17jhet2"]
+[gd_scene load_steps=7 format=3 uid="uid://bkwn2t17jhet2"]
 
 [ext_resource type="Script" uid="uid://cjakmqhb0qw3n" path="res://Game/game.gd" id="1_37esa"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="1_hqwdr"]
+[ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="2_ghvq8"]
 [ext_resource type="Texture2D" uid="uid://b64bo1wxu1qph" path="res://Assets/Table.png" id="2_vrr3t"]
 [ext_resource type="PackedScene" uid="uid://h4hs4rtdq0aa" path="res://Game/Cards/card.tscn" id="3_iv3md"]
 [ext_resource type="PackedScene" uid="uid://clmuqidjeeljp" path="res://Menus/Hud.tscn" id="5_jxerj"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("selector")]
 script = ExtResource("1_37esa")
+selector = NodePath("PlayArea/Selector")
+selector_offset = Vector2(-25, 0)
 
 [node name="PlayArea" type="CanvasLayer" parent="."]
 
@@ -16,109 +19,114 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="PlayArea/Container"]
 layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 texture = ExtResource("2_vrr3t")
 expand_mode = 1
 
 [node name="CardField" type="Control" parent="PlayArea"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 216.0
-offset_top = 587.0
-offset_right = 216.0
-offset_bottom = 587.0
+offset_left = 89.0
+offset_top = 582.0
+offset_right = 89.0
+offset_bottom = 582.0
 scale = Vector2(0.865, 0.865)
 
-[node name="Card Area" type="GridContainer" parent="PlayArea/CardField"]
+[node name="CardArea" type="GridContainer" parent="PlayArea/CardField"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_top = -582.0
 offset_right = 728.0
 offset_bottom = -194.0
-theme_override_constants/h_separation = 104
-theme_override_constants/v_separation = 194
+mouse_filter = 2
 columns = 8
 
-[node name="CardR1C1" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C1" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C2" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C2" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C3" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C3" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C4" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C4" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C5" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C5" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C6" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C6" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C7" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C7" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR1C8" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR1C8" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C1" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C1" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C2" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C2" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C3" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C3" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C4" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C4" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C5" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C5" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C6" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C6" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C7" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C7" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR2C8" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR2C8" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C1" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C1" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C2" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C2" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C3" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C3" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C4" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C4" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C5" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C5" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C6" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C6" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C7" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C7" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
 
-[node name="CardR3C8" parent="PlayArea/CardField/Card Area" instance=ExtResource("3_iv3md")]
+[node name="CardR3C8" parent="PlayArea/CardField/CardArea" instance=ExtResource("3_iv3md")]
 layout_mode = 2
+
+[node name="Selector" parent="PlayArea" instance=ExtResource("2_ghvq8")]
+visible = false
+z_index = 1
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 5
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("1_hqwdr")]
-visible = false
 mouse_filter = 2
 
 [node name="Hud Layer" type="CanvasLayer" parent="."]
