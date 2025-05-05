@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_re3ym"]
 
-[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("selector")]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("selector", "volume_sliders")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8x3wo")
 selector = NodePath("Selector")
+volume_sliders = {
+"master_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider"),
+"music_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider")
+}
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 3
