@@ -20,6 +20,7 @@ config/icon="uid://b4jvdvcmjbamo"
 [autoload]
 
 GameManager="*res://Scripts/Managers/GameManager.tscn"
+ConfigFileHandler="*res://Scripts/Managers/ConfigFileHandler.tscn"
 
 [display]
 
