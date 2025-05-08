@@ -375,7 +375,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"visibility_value"
+"method": &"visibility_flip"
 }]
 }
 tracks/4/type = "value"

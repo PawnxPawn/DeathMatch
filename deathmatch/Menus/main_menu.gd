@@ -7,7 +7,7 @@ extends Control
 @export var selector: PanelContainer
 @export var selector_offset: Vector2
 
-@onready var level_0 = "res://Game/Game.tscn" #Fixes a bug. I hate it here. (I put on a onready to fix it PwnxPwn)
+@onready var level_0 = "res://Game/Game.tscn"
 @onready var vbox_container: VBoxContainer = %MenuContainer
 @onready var hover_tone: AkEvent2D = $Node2D/Hover_Tone
 

@@ -1,11 +1,9 @@
 extends Node2D
 
 @onready var card_area: GridContainer = %CardArea
-@onready var card_ref: Button = %"CardArea/CardR1C1" # Should get this info a diffrent way
+#TODO: Get Card Ref diffrently
+@onready var card_ref: Button = %"CardArea/CardR1C1"
 @onready var delay_timer: Timer = $DelayTimer
-@onready var card_bad_sound: AkEvent2D = $Wwise/Card_Bad_sound
-@onready var card_good_sound: AkEvent2D = $Wwise/Card_Good_Sound
-@onready var lost_life: AkEvent2D = $Wwise/Lost_Life
 
 @export var score = 100
 
@@ -19,50 +17,56 @@ var card_compare:Array[Button]
 var seen_cards:Array[Button]
 
 func _ready() -> void:
-	_initialize_cards()
-	GameManager.dead.connect(lose)
-	get_tree().paused = false
 	GameManager.reset_game()
+	_initialize_game()
 
-#Initialize the cards icons and values
-func _initialize_cards() -> void:
-	# Connect all cards card_flipped signal
+func _initialize_game() -> void:
+	_intialize_signals()
+	_intialize_cards()
+
+
+func _intialize_signals() -> void:
+	GameManager.dead.connect(lose)
+	
 	for child in card_area.get_children():
 		child.card_flipped.connect(_check_card)
 		child.mouse_entered.connect(_on_mouse_entered)
 		child.mouse_exited.connect(_on_mouse_exited)
-	
-	# Pool of possible card IDs
-	var value: Array[int] = []
+
+
+func _intialize_cards() -> void:
+	var card_ids: Array[int] = []
 	var icon_pool: Array[int] = []
-	var values_to_get: int = int(card_area.get_child_count() / 2.0)
+	var ids_to_get: int = int(card_area.get_child_count() / 2.0)
 
 	for i in range(card_ref.get_face_texture_frame_count()):
 		icon_pool.append(i)
 
-	for i in range(values_to_get):
-		var randomized_value = _get_value_from_pool(icon_pool)
-		value.append(randomized_value)
-		value.append(randomized_value)
+	for i in range(ids_to_get):
+		var randomized_id = _get_id_from_pool(icon_pool)
+		card_ids.append(randomized_id)
+		card_ids.append(randomized_id)
 	
-	# Assign cards a ID
+	_assign_ids(card_ids)
+
+
+func _assign_ids(card_ids:Array[int]) -> void:
 	for child in card_area.get_children():
-		if child.should_init:
-			cards_at_play.append(child)
-			child.update_icon_id(_get_value_from_pool(value))
-		else:
+		if !child.should_init:
 			child.disable_card()
+			continue
+		
+		cards_at_play.append(child)
+		child.update_icon_id(_get_id_from_pool(card_ids))
 
 
-# Fetch and remove a value from the pool
-func _get_value_from_pool(pool: Array[int]) -> int:
+func _get_id_from_pool(pool: Array[int]) -> int:
 	var random_index = randi_range(0, pool.size() - 1)
 	var value_to_return = pool[random_index]
 	pool.erase(value_to_return)
 	return value_to_return
 
 
-# Keep list of completed 
 func _enable_disable_current_cards(card:Button) -> void:
 	if found_pairs.find(card) == -1 and card.should_init: 
 		card.disabled = !card.disabled
@@ -72,7 +76,6 @@ func _check_card(card:Button) -> void:
 	
 	if card_compare.size() >= 2 or card.is_flipped or card.animation_player.is_playing(): return
 	
-	# Add card to arrays
 	card_compare.append(card)
 	
 	# Mark card as flipped
@@ -90,14 +93,12 @@ func _check_card(card:Button) -> void:
 
 func _on_delay_timer_timeout() -> void:
 	if card_compare[0].icon_id == card_compare[1].icon_id:
-		card_good_sound.post_event()
 		# Hides cards then adds cards to a found pair array
 		for i in card_compare:
 			i.disable_card()
 			found_pairs.append(i)
 		GameManager.score += score
 	else:
-		card_bad_sound.post_event()
 		# Checks if cards have been seen if not adds them to an array
 		# else takes a life
 		GameManager.chain_multiplier = 1
@@ -110,7 +111,6 @@ func _on_delay_timer_timeout() -> void:
 				seen_cards.append(i)
 		
 		if has_seen_card:
-			lost_life.post_event()
 			GameManager.health -= 1
 	
 	card_compare.clear()

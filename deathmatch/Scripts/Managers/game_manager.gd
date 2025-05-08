@@ -43,6 +43,7 @@ func _ready() -> void:
 
 
 func reset_game() -> void:
+	get_tree().paused = false
 	health = 5
 	score = 0
 	chain_multiplier = 1
@@ -54,10 +55,3 @@ func game_won() -> void:
 	high_score = score if score > high_score else high_score
 	print(high_score)
 	pass
-
-
-# func change_cursor(selector: bool) -> void:
-# 	if (selector):
-# 		Input.set_custom_mouse_cursor(knife_cursor)
-# 	else:
-# 		Input.set_custom_mouse_cursor(standard_cursor)
