@@ -12,6 +12,7 @@ signal card_flipped(Button)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var face_texture: TextureSpriteFrames = $CardTexture/FaceTexture
 @onready var card_texture: TextureSpriteFrames = $CardTexture
+@onready var test_tone: AkEvent2D = $Wwise/Test_tone
 
 var is_flipped:bool = false
 
@@ -41,4 +42,5 @@ func disable_card() -> void:
 
 
 func _on_clicked() -> void:
+	test_tone.post_event()
 	card_flipped.emit(self)

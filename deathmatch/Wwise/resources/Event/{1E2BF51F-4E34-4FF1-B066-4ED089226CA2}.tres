@@ -1,0 +1,7 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://dk0k2n5k8tgoh"]
+
+[resource]
+name = "Tone_good"
+id = 582223787
+guid = "{1E2BF51F-4E34-4FF1-B066-4ED089226CA2}"
+dummy = true

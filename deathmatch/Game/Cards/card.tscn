@@ -1,9 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://h4hs4rtdq0aa"]
+[gd_scene load_steps=55 format=3 uid="uid://h4hs4rtdq0aa"]
 
 [ext_resource type="Script" uid="uid://dqog5m8quisxg" path="res://Game/Cards/cardButton.gd" id="1_ayre0"]
 [ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Scripts/TextureSpritesFrames/texture_sprite_frames.gd" id="2_0korm"]
 [ext_resource type="Texture2D" uid="uid://i1qkf3fowdox" path="res://Assets/Cards/Card_flip_sprite_sheet.png" id="3_ayre0"]
 [ext_resource type="Texture2D" uid="uid://yunlb1ghuwtx" path="res://Assets/Cards/Card_Icon.png" id="3_ipob6"]
+[ext_resource type="WwiseEvent" uid="uid://cke30ffvgiykg" path="res://Wwise/resources/Event/{BA3789F1-1494-40FF-84F7-2AC71F265A4B}.tres" id="5_av8u4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayre0"]
 
@@ -445,5 +446,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ayre0")
 }
 movie_quit_on_finish = true
+
+[node name="Wwise" type="Node2D" parent="."]
+
+[node name="Test_tone" type="AkEvent2D" parent="Wwise"]
+event = ExtResource("5_av8u4")
 
 [connection signal="button_down" from="." to="." method="_on_clicked"]

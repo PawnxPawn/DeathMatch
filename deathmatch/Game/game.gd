@@ -3,6 +3,9 @@ extends Node2D
 @onready var card_area: GridContainer = %CardArea
 @onready var card_ref: Button = %"CardArea/CardR1C1" # Should get this info a diffrent way
 @onready var delay_timer: Timer = $DelayTimer
+@onready var card_bad_sound: AkEvent2D = $Wwise/Card_Bad_sound
+@onready var card_good_sound: AkEvent2D = $Wwise/Card_Good_Sound
+@onready var lost_life: AkEvent2D = $Wwise/Lost_Life
 
 @export var score = 100
 
@@ -87,12 +90,14 @@ func _check_card(card:Button) -> void:
 
 func _on_delay_timer_timeout() -> void:
 	if card_compare[0].icon_id == card_compare[1].icon_id:
+		card_good_sound.post_event()
 		# Hides cards then adds cards to a found pair array
 		for i in card_compare:
 			i.disable_card()
 			found_pairs.append(i)
 		GameManager.score += score
 	else:
+		card_bad_sound.post_event()
 		# Checks if cards have been seen if not adds them to an array
 		# else takes a life
 		GameManager.chain_multiplier = 1
@@ -105,6 +110,7 @@ func _on_delay_timer_timeout() -> void:
 				seen_cards.append(i)
 		
 		if has_seen_card:
+			lost_life.post_event()
 			GameManager.health -= 1
 	
 	card_compare.clear()

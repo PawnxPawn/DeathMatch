@@ -9,6 +9,7 @@ extends Control
 
 @onready var level_0 = "res://Game/Game.tscn" #Fixes a bug. I hate it here. (I put on a onready to fix it PwnxPwn)
 @onready var vbox_container: VBoxContainer = %MenuContainer
+@onready var hover_tone: AkEvent2D = $Node2D/Hover_Tone
 
 
 func _on_play_game_button_pressed() -> void:
@@ -21,6 +22,7 @@ func show_hide() -> void:
 
 
 func _on_hover_set_selector() -> void:
+	hover_tone.post_event()
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var node: Node
 	
