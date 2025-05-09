@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdmlspewkwo5s"]
+[gd_scene load_steps=10 format=3 uid="uid://bdmlspewkwo5s"]
 
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
 [ext_resource type="Texture2D" uid="uid://c812hydhblg28" path="res://Assets/UI/Death_Match_Title.png" id="2_7ihqj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="5_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Scripts/SettingsLoader/SettingsLoader.tscn" id="6_0xbyl"]
+[ext_resource type="PackedScene" uid="uid://18717fkqsibr" path="res://Scripts/Managers/SoundManager/SoundManager.tscn" id="7_1txdl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_n6o36"]
 
@@ -107,6 +108,8 @@ visible = false
 layout_mode = 0
 
 [node name="SettingsLoader" parent="." instance=ExtResource("6_0xbyl")]
+
+[node name="SoundManager" parent="." instance=ExtResource("7_1txdl")]
 
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]

@@ -1,18 +1,20 @@
 extends Node
 
-signal dead
 signal updated_values(health_update: int, score_update: int, multiplier_update: int)
 
 var knife_cursor = load("res://Assets/Cursor/selector_sword_crop.png")
 var standard_cursor = load("res://Assets/Cursor/Cursor.png")
+
+var has_won_game: bool = false
+
+var _end_game_scene: StringName = &"uid://baq13tim2y7vx"
 
 var health: int = 5:
 	set (value):
 		health = value
 		if (health <= 0):
 			health = 0
-			dead.emit()
-			print("Game Over")
+			end_game(false)
 		updated_values.emit(health, score, chain_multiplier)
 	get:
 		return health
@@ -43,6 +45,7 @@ func _ready() -> void:
 
 
 func reset_game() -> void:
+	get_tree().paused = false
 	health = 5
 	score = 0
 	chain_multiplier = 1
@@ -50,14 +53,9 @@ func reset_game() -> void:
 
 
 ##Game Won events
-func game_won() -> void:
+func end_game(has_won:bool) -> void:
+	has_won_game = has_won
 	high_score = score if score > high_score else high_score
+	get_tree().change_scene_to_file(_end_game_scene)
 	print(high_score)
 	pass
-
-
-# func change_cursor(selector: bool) -> void:
-# 	if (selector):
-# 		Input.set_custom_mouse_cursor(knife_cursor)
-# 	else:
-# 		Input.set_custom_mouse_cursor(standard_cursor)

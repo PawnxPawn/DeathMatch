@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkwn2t17jhet2"]
+[gd_scene load_steps=8 format=3 uid="uid://bkwn2t17jhet2"]
 
 [ext_resource type="Script" uid="uid://cjakmqhb0qw3n" path="res://Game/game.gd" id="1_37esa"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="1_hqwdr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b64bo1wxu1qph" path="res://Assets/Table.png" id="2_vrr3t"]
 [ext_resource type="PackedScene" uid="uid://h4hs4rtdq0aa" path="res://Game/Cards/card.tscn" id="3_iv3md"]
 [ext_resource type="PackedScene" uid="uid://clmuqidjeeljp" path="res://Menus/Hud.tscn" id="5_jxerj"]
+[ext_resource type="PackedScene" uid="uid://18717fkqsibr" path="res://Scripts/Managers/SoundManager/SoundManager.tscn" id="7_fuqhk"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("selector")]
 script = ExtResource("1_37esa")
@@ -135,5 +136,7 @@ mouse_filter = 2
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SoundManager" parent="." instance=ExtResource("7_fuqhk")]
 
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

@@ -1,160 +1,179 @@
 extends Node2D
 
+#region Node references
 @onready var card_area: GridContainer = %CardArea
-@onready var card_ref: Button = %"CardArea/CardR1C1" # Should get this info a diffrent way
+@onready var card_ref: Button = %"CardArea/CardR1C1" # TODO: Get Card Ref differently
 @onready var delay_timer: Timer = $DelayTimer
+@onready var sound: Node = $SoundManager
+#endregion
 
+#region Game variables
 @export var score = 100
+#endregion
 
+#region Selector variables
 @export_category("Selector")
 @export var selector: PanelContainer
 @export var selector_offset: Vector2
+#endregion
 
-var cards_at_play:Array[Button]
-var found_pairs:Array[Button]
-var card_compare:Array[Button]
-var seen_cards:Array[Button]
 
+#region Card tracking
+var cards_at_play: Array[Button]
+var found_pairs: Array[Button]
+var card_compare: Array[Button]
+var seen_cards: Array[Button]
+#endregion
+
+#region Sounds
+var card_bad_sfx: StringName = &"CardBadSound"
+var card_good_sfx: StringName = &"CardGoodSound"
+var lost_life_sfx: StringName = &"LostLife"
+var card_flip_sfx: StringName = &"TestTone"
+#endregion
+
+#region Initialization
 func _ready() -> void:
-	_initialize_cards()
-	GameManager.dead.connect(lose)
-	get_tree().paused = false
 	GameManager.reset_game()
+	_initialize_game()
 
-#Initialize the cards icons and values
-func _initialize_cards() -> void:
-	# Connect all cards card_flipped signal
+func _initialize_game() -> void:
+	_initialize_signals()
+	_initialize_cards()
+
+func _initialize_signals() -> void:
 	for child in card_area.get_children():
-		child.card_flipped.connect(_check_card)
+		child.card_flipped.connect(_flip_selected_card)
 		child.mouse_entered.connect(_on_mouse_entered)
 		child.mouse_exited.connect(_on_mouse_exited)
-	
-	# Pool of possible card IDs
-	var value: Array[int] = []
+
+func _initialize_cards() -> void:
+	var card_ids: Array[int] = []
 	var icon_pool: Array[int] = []
-	var values_to_get: int = int(card_area.get_child_count() / 2.0)
+	var ids_to_get: int = int(card_area.get_child_count() / 2.0)
 
 	for i in range(card_ref.get_face_texture_frame_count()):
 		icon_pool.append(i)
 
-	for i in range(values_to_get):
-		var randomized_value = _get_value_from_pool(icon_pool)
-		value.append(randomized_value)
-		value.append(randomized_value)
+	for i in range(ids_to_get):
+		var randomized_id = _get_id_from_pool(icon_pool)
+		card_ids.append(randomized_id)
+		card_ids.append(randomized_id)
 	
-	# Assign cards a ID
-	for child in card_area.get_children():
-		if child.should_init:
-			cards_at_play.append(child)
-			child.update_icon_id(_get_value_from_pool(value))
-		else:
-			child.disable_card()
+	_assign_ids(card_ids)
 
-
-# Fetch and remove a value from the pool
-func _get_value_from_pool(pool: Array[int]) -> int:
+func _get_id_from_pool(pool: Array[int]) -> int:
 	var random_index = randi_range(0, pool.size() - 1)
 	var value_to_return = pool[random_index]
 	pool.erase(value_to_return)
 	return value_to_return
 
+func _assign_ids(card_ids: Array[int]) -> void:
+	for child in card_area.get_children():
+		if !child.should_init:
+			child.disable_card()
+			continue
+		
+		cards_at_play.append(child)
+		child.update_icon_id(_get_id_from_pool(card_ids))
+#endregion
 
-# Keep list of completed 
-func _enable_disable_current_cards(card:Button) -> void:
-	if found_pairs.find(card) == -1 and card.should_init: 
-		card.disabled = !card.disabled
-
-
-func _check_card(card:Button) -> void:
+#region Card interactions
+func _flip_selected_card(card: Button) -> void:
+	if card_compare.size() >= 2 or card.is_flipped or card.animation_player.is_playing():
+		return
 	
-	if card_compare.size() >= 2 or card.is_flipped or card.animation_player.is_playing(): return
-	
-	# Add card to arrays
+	sound.play_sfx(card_flip_sfx)
+
 	card_compare.append(card)
-	
-	# Mark card as flipped
 	card.is_flipped = true
 	card.animation_player.play(&"flip_card")
-	
-	if card_compare.size() != 2: return
-	
-	# Disable cards buttom
+
+	if card_compare.size() != 2:
+		return
+
 	for child in card_area.get_children():
 		_enable_disable_current_cards(child)
 	
 	delay_timer.start()
 
-
 func _on_delay_timer_timeout() -> void:
+	_compare_cards()
+
+func _compare_cards() -> void:
 	if card_compare[0].icon_id == card_compare[1].icon_id:
-		# Hides cards then adds cards to a found pair array
-		for i in card_compare:
-			i.disable_card()
-			found_pairs.append(i)
-		GameManager.score += score
+		_cards_matched()
 	else:
-		# Checks if cards have been seen if not adds them to an array
-		# else takes a life
-		GameManager.chain_multiplier = 1
-		var has_seen_card:bool = false
-		for i in card_compare:
-			i.flip_card_back()
-			if seen_cards.find(i) != -1:
-				has_seen_card = true
-			else:
-				seen_cards.append(i)
-		
-		if has_seen_card:
-			GameManager.health -= 1
+		_cards_dont_match()
+	
 	
 	card_compare.clear()
-	
-	#Re-Enables active cards
+
 	for child in card_area.get_children():
 		_enable_disable_current_cards(child)
 	
 	if cards_at_play.size() == found_pairs.size():
-		GameManager.game_won()
-		print("Game Won")
-		win()
-	
+		GameManager.end_game(true)
+
 	print("Health: %d" % GameManager.health)
 	print("Score: %d" % GameManager.score)
 	print("Multiplier: %d" % GameManager.chain_multiplier)
 
+func _cards_matched() -> void:
+	sound.play_sfx(card_good_sfx)
+	for i in card_compare:
+		i.disable_card()
+		found_pairs.append(i)
+	
+	GameManager.score += score
 
+func _cards_dont_match() -> void:
+	sound.play_sfx(card_bad_sfx)
+
+	var has_seen_card: bool = false
+	GameManager.chain_multiplier = 1
+
+	for i in card_compare:
+		i.flip_card_back()
+
+		if seen_cards.find(i) != -1:
+			has_seen_card = true
+			continue
+		
+		seen_cards.append(i)
+	
+	if has_seen_card:
+		sound.play_sfx(lost_life_sfx)
+		GameManager.health -= 1
+
+func _enable_disable_current_cards(card: Button) -> void:
+	if found_pairs.find(card) == -1 and card.should_init:
+		card.disabled = !card.disabled
+#endregion
+
+#region Selector movement
 func _on_mouse_entered() -> void:
+	_move_selector()
+
+func _on_mouse_exited() -> void:
+	pass
+
+func _move_selector() -> void:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var node: Node
 
 	for child in card_area.get_children():
-		
 		if child is Button and child.get_global_rect().has_point(mouse_pos) and not child.is_flipped:
 			node = child
 			break
-
 	
-	if node == null: return
-
-	print(node.name)
+	if node == null:
+		return
 
 	var node_center_point: Vector2 = node.get_global_rect().position
-	node_center_point.x -= node.get_global_rect().size.x / 2.0
-	node_center_point.y += node.get_global_rect().size.y / 2.0
-
+	node_center_point.x -= node.get_global_rect().size.x * .5
+	node_center_point.y += node.get_global_rect().size.y * .5
 
 	selector.set_selector_position(node_center_point, selector_offset)
 	selector.show()
-
-
-func _on_mouse_exited() -> void:
-	#selector.hide()
-	pass
-
-
-func lose() -> void:
-	get_tree().change_scene_to_file("res://Game/Win+Lose Screens/LoseScreen.tscn")
-
-
-func win() -> void:
-	get_tree().change_scene_to_file("res://Game/Win+Lose Screens/WinScreen.tscn")
+#endregion

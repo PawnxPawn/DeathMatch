@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3340225156	Lost_Life			\Default Work Unit\Lost_Life	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	881899795	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\Default Work Unit\Tone lost life\Tone Generator	
+

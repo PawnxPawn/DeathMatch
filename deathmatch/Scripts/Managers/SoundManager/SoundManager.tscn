@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://18717fkqsibr"]
+
+[ext_resource type="WwiseEvent" uid="uid://cke30ffvgiykg" path="res://Wwise/resources/Event/{BA3789F1-1494-40FF-84F7-2AC71F265A4B}.tres" id="1_nrxun"]
+[ext_resource type="Script" uid="uid://tetvowoh3lte" path="res://Scripts/Managers/SoundManager/sound_manager.gd" id="1_xdbr5"]
+[ext_resource type="WwiseEvent" uid="uid://bebqc44xbwgc" path="res://Wwise/resources/Event/{91942C00-873E-4682-BD9C-ED69E0D73D17}.tres" id="2_xdbr5"]
+[ext_resource type="WwiseEvent" uid="uid://dk0k2n5k8tgoh" path="res://Wwise/resources/Event/{1E2BF51F-4E34-4FF1-B066-4ED089226CA2}.tres" id="3_lc0vj"]
+[ext_resource type="WwiseEvent" uid="uid://25dn0mclklby" path="res://Wwise/resources/Event/{A43D38A0-B8EE-4AB6-9335-36C8024975AF}.tres" id="4_g75se"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_xdbr5")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="TestTone" type="AkEvent2D" parent="SFX"]
+event = ExtResource("1_nrxun")
+
+[node name="CardBadSound" type="AkEvent2D" parent="SFX"]
+event = ExtResource("2_xdbr5")
+
+[node name="CardGoodSound" type="AkEvent2D" parent="SFX"]
+event = ExtResource("3_lc0vj")
+
+[node name="LostLife" type="AkEvent2D" parent="SFX"]
+event = ExtResource("4_g75se")
+
+[node name="HoverTone" type="AkEvent2D" parent="SFX"]
+event = ExtResource("1_nrxun")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AkListener2D" type="AkListener2D" parent="."]
