@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="5_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Scripts/SettingsLoader/SettingsLoader.tscn" id="6_0xbyl"]
-[ext_resource type="WwiseEvent" uid="uid://cke30ffvgiykg" path="res://Wwise/resources/Event/{BA3789F1-1494-40FF-84F7-2AC71F265A4B}.tres" id="7_1txdl"]
+[ext_resource type="PackedScene" uid="uid://18717fkqsibr" path="res://Scripts/Managers/SoundManager/SoundManager.tscn" id="7_1txdl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_n6o36"]
 
@@ -109,12 +109,7 @@ layout_mode = 0
 
 [node name="SettingsLoader" parent="." instance=ExtResource("6_0xbyl")]
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="AkListener2D" type="AkListener2D" parent="Node2D"]
-
-[node name="Hover_Tone" type="AkEvent2D" parent="Node2D"]
-event = ExtResource("7_1txdl")
+[node name="SoundManager" parent="." instance=ExtResource("7_1txdl")]
 
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]

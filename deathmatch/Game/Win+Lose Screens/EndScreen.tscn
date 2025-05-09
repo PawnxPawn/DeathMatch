@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://baq13tim2y7vx"]
+
+[ext_resource type="Script" uid="uid://dojpr158axq4j" path="res://Game/Win+Lose Screens/end_screen.gd" id="1_35kdd"]
+[ext_resource type="Texture2D" uid="uid://c4ubn6l4juvgw" path="res://Assets/Screen/End_screen_win.png" id="1_ijouu"]
+[ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Scripts/TextureSpritesFrames/texture_sprite_frames.gd" id="3_35kdd"]
+[ext_resource type="Texture2D" uid="uid://hgra00luu0ne" path="res://Assets/Screen/End_screen_loss.png" id="4_jblwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdgdq"]
+atlas = ExtResource("4_jblwx")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk8ji"]
+atlas = ExtResource("1_ijouu")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wg76y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdgdq")
+}],
+"loop": true,
+"name": &"lose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk8ji")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
+}]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_35kdd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EndScreenImage" type="TextureRect" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("AtlasTexture_qdgdq")
+script = ExtResource("3_35kdd")
+sprite_frames = SubResource("SpriteFrames_wg76y")
+current_animation = &"lose"
+metadata/_custom_type_script = "uid://d0mmq2inlb2s1"

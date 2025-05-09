@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkwn2t17jhet2"]
+[gd_scene load_steps=8 format=3 uid="uid://bkwn2t17jhet2"]
 
 [ext_resource type="Script" uid="uid://cjakmqhb0qw3n" path="res://Game/game.gd" id="1_37esa"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="1_hqwdr"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b64bo1wxu1qph" path="res://Assets/Table.png" id="2_vrr3t"]
 [ext_resource type="PackedScene" uid="uid://h4hs4rtdq0aa" path="res://Game/Cards/card.tscn" id="3_iv3md"]
 [ext_resource type="PackedScene" uid="uid://clmuqidjeeljp" path="res://Menus/Hud.tscn" id="5_jxerj"]
-[ext_resource type="WwiseEvent" uid="uid://bebqc44xbwgc" path="res://Wwise/resources/Event/{91942C00-873E-4682-BD9C-ED69E0D73D17}.tres" id="7_oscxy"]
-[ext_resource type="WwiseEvent" uid="uid://dk0k2n5k8tgoh" path="res://Wwise/resources/Event/{1E2BF51F-4E34-4FF1-B066-4ED089226CA2}.tres" id="8_eqev2"]
-[ext_resource type="WwiseEvent" uid="uid://25dn0mclklby" path="res://Wwise/resources/Event/{A43D38A0-B8EE-4AB6-9335-36C8024975AF}.tres" id="9_eqev2"]
+[ext_resource type="PackedScene" uid="uid://18717fkqsibr" path="res://Scripts/Managers/SoundManager/SoundManager.tscn" id="7_fuqhk"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("selector")]
 script = ExtResource("1_37esa")
@@ -139,17 +137,6 @@ mouse_filter = 2
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Wwise" type="Node2D" parent="."]
-
-[node name="AkListener2D" type="AkListener2D" parent="Wwise"]
-
-[node name="Card_Bad_sound" type="AkEvent2D" parent="Wwise"]
-event = ExtResource("7_oscxy")
-
-[node name="Card_Good_Sound" type="AkEvent2D" parent="Wwise"]
-event = ExtResource("8_eqev2")
-
-[node name="Lost_Life" type="AkEvent2D" parent="Wwise"]
-event = ExtResource("9_eqev2")
+[node name="SoundManager" parent="." instance=ExtResource("7_fuqhk")]
 
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

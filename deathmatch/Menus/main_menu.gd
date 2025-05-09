@@ -1,5 +1,9 @@
 extends Control
 
+@onready var level_0 = "res://Game/Game.tscn"
+@onready var vbox_container: VBoxContainer = %MenuContainer
+@onready var sound: Node = $SoundManager
+
 @export var settings_menu: Control
 @export var main_menu_control: Control
 
@@ -7,9 +11,8 @@ extends Control
 @export var selector: PanelContainer
 @export var selector_offset: Vector2
 
-@onready var level_0 = "res://Game/Game.tscn"
-@onready var vbox_container: VBoxContainer = %MenuContainer
-@onready var hover_tone: AkEvent2D = $Node2D/Hover_Tone
+#Sound Node Names
+var hover_sfx: StringName  = &"HoverTone" 
 
 
 func _on_play_game_button_pressed() -> void:
@@ -22,7 +25,7 @@ func show_hide() -> void:
 
 
 func _on_hover_set_selector() -> void:
-	hover_tone.post_event()
+	sound.play_sfx(hover_sfx)
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var node: Node
 	
