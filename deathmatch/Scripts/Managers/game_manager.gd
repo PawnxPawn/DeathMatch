@@ -9,6 +9,8 @@ var has_won_game: bool = false
 
 var _end_game_scene: StringName = &"uid://baq13tim2y7vx"
 
+@onready var death_timer : Timer = %DeathTimer
+
 var health: int = 5:
 	set (value):
 		health = value
@@ -56,6 +58,9 @@ func reset_game() -> void:
 func end_game(has_won:bool) -> void:
 	has_won_game = has_won
 	high_score = score if score > high_score else high_score
+	if (!has_won):
+		death_timer.start()
+		await death_timer.timeout
 	get_tree().change_scene_to_file(_end_game_scene)
 	print(high_score)
 	pass
