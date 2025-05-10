@@ -25,13 +25,6 @@ var card_compare: Array[Button]
 var seen_cards: Array[Button]
 #endregion
 
-#region Sounds
-var card_bad_sfx: StringName = &"CardBadSound"
-var card_good_sfx: StringName = &"CardGoodSound"
-var lost_life_sfx: StringName = &"LostLife"
-var card_flip_sfx: StringName = &"TestTone"
-#endregion
-
 #region Initialization
 func _ready() -> void:
 	GameManager.reset_game()
@@ -83,7 +76,7 @@ func _flip_selected_card(card: Button) -> void:
 	if card_compare.size() >= 2 or card.is_flipped or card.animation_player.is_playing():
 		return
 	
-	sound.play_sfx(card_flip_sfx)
+	sound.play_sfx(sound.card_flip_sfx)
 
 	card_compare.append(card)
 	card.is_flipped = true
@@ -120,7 +113,7 @@ func _compare_cards() -> void:
 	print("Multiplier: %d" % GameManager.chain_multiplier)
 
 func _cards_matched() -> void:
-	sound.play_sfx(card_good_sfx)
+	sound.play_sfx(sound.card_good_sfx)
 	for i in card_compare:
 		i.disable_card()
 		found_pairs.append(i)
@@ -128,7 +121,7 @@ func _cards_matched() -> void:
 	GameManager.score += score
 
 func _cards_dont_match() -> void:
-	sound.play_sfx(card_bad_sfx)
+	sound.play_sfx(sound.card_bad_sfx)
 
 	var has_seen_card: bool = false
 	GameManager.chain_multiplier = 1
@@ -143,7 +136,7 @@ func _cards_dont_match() -> void:
 		seen_cards.append(i)
 	
 	if has_seen_card:
-		sound.play_sfx(lost_life_sfx)
+		sound.play_sfx(sound.lost_life_sfx)
 		GameManager.health -= 1
 
 func _enable_disable_current_cards(card: Button) -> void:
