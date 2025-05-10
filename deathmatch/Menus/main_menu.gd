@@ -11,9 +11,6 @@ extends Control
 @export var selector: PanelContainer
 @export var selector_offset: Vector2
 
-#Sound Node Names
-var hover_sfx: StringName  = &"HoverTone" 
-
 
 func _on_play_game_button_pressed() -> void:
 	get_tree().change_scene_to_file(level_0)
@@ -25,7 +22,7 @@ func show_hide() -> void:
 
 
 func _on_hover_set_selector() -> void:
-	sound.play_sfx(hover_sfx)
+	sound.play_sfx(sound.hover_sfx)
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var node: Node
 	
