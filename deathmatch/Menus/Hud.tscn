@@ -1,14 +1,558 @@
-[gd_scene load_steps=5 format=3 uid="uid://clmuqidjeeljp"]
+[gd_scene load_steps=18 format=3 uid="uid://clmuqidjeeljp"]
 
-[ext_resource type="Texture2D" uid="uid://cefhpspubxle2" path="res://Assets/Health_Hands/Hand_set.png" id="1_aq2ra"]
 [ext_resource type="Script" uid="uid://hjy2dy8b5e4o" path="res://Menus/hud.gd" id="1_efy7n"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_efy7n"]
-atlas = ExtResource("1_aq2ra")
-region = Rect2(0, 14, 276, 624)
+[ext_resource type="Texture2D" uid="uid://c1kahs86rmfif" path="res://Assets/Health_Hands/HandHealth_1.png" id="3_gjfyq"]
+[ext_resource type="FontFile" uid="uid://clmcvx0sjqi8x" path="res://Assets/Font/times-new-pixel.otf" id="3_o8hsu"]
+[ext_resource type="Texture2D" uid="uid://dplabtarfyd5p" path="res://Assets/Health_Hands/HandHealth_2.png" id="4_17fh7"]
+[ext_resource type="Texture2D" uid="uid://cf0aot2ph05ft" path="res://Assets/Health_Hands/HandHealth_0.png" id="4_fgfvy"]
+[ext_resource type="Texture2D" uid="uid://bastr3f5555vr" path="res://Assets/Health_Hands/HandHealth_3.png" id="5_o55p2"]
+[ext_resource type="Texture2D" uid="uid://bnfnf68ng1372" path="res://Assets/Health_Hands/HandHealth_4.png" id="6_17fh7"]
+[ext_resource type="Texture2D" uid="uid://c5ifgawe0la5k" path="res://Assets/Health_Hands/HandHealth_5.png" id="7_o55p2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8hsu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_o8hsu"]
+resource_name = "1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_gjfyq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumbBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointerBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MiddleBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PinkyBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StumpBlood:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gjfyq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_gjfyq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumbBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointerBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MiddleBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PinkyBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StumpBlood:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8y86x"]
+resource_name = "2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThumbBlood:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointerBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MiddleBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PinkyBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StumpBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_17fh7")]
+}
+
+[sub_resource type="Animation" id="Animation_usnsr"]
+resource_name = "0"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fgfvy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumbBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointerBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MiddleBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PinkyBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StumpBlood:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lckxr"]
+resource_name = "3"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_o55p2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumbBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointerBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MiddleBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PinkyBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StumpBlood:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1pglm"]
+resource_name = "4"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_17fh7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumbBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointerBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MiddleBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PinkyBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StumpBlood:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_17fh7"]
+resource_name = "5"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_o55p2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumbBlood:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointerBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MiddleBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PinkyBlood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StumpBlood:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8y86x"]
+_data = {
+&"0": SubResource("Animation_usnsr"),
+&"1": SubResource("Animation_o8hsu"),
+&"2": SubResource("Animation_8y86x"),
+&"3": SubResource("Animation_lckxr"),
+&"4": SubResource("Animation_1pglm"),
+&"5": SubResource("Animation_17fh7"),
+&"RESET": SubResource("Animation_gjfyq")
+}
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -16,30 +560,12 @@ anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_efy7n")
 
-[node name="HandLifeCounter" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 871.0
-offset_top = 263.0
-offset_right = 1308.0
-offset_bottom = 903.0
-scale = Vector2(0.6, 0.6)
-mouse_filter = 2
-texture = SubResource("AtlasTexture_efy7n")
-
-[node name="HandLifeCounterBg" type="PanelContainer" parent="HandLifeCounter"]
-unique_name_in_owner = true
-visible = false
-show_behind_parent = true
-layout_mode = 0
-offset_right = 408.0
-offset_bottom = 590.0
-mouse_filter = 2
-
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 164.0
+offset_bottom = 55.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o8hsu")
 
@@ -53,11 +579,27 @@ mouse_filter = 2
 
 [node name="ScoreTitleLabel" type="Label" parent="PanelContainer/VBoxContainer/Score"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.188235, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0.854902, 0.52549, 0.243137, 1)
+theme_override_colors/font_outline_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_o8hsu")
 text = "Score:"
 
 [node name="ScoreLabel" type="Label" parent="PanelContainer/VBoxContainer/Score"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.188235, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0.854902, 0.52549, 0.243137, 1)
+theme_override_colors/font_outline_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_o8hsu")
 text = "0"
 
 [node name="Multiplier" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -66,11 +608,27 @@ mouse_filter = 2
 
 [node name="MultiplierTitleLabel" type="Label" parent="PanelContainer/VBoxContainer/Multiplier"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.188235, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0.854902, 0.52549, 0.243137, 1)
+theme_override_colors/font_outline_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_o8hsu")
 text = "Multiplier:"
 
 [node name="MultiplierLabel" type="Label" parent="PanelContainer/VBoxContainer/Multiplier"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.188235, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0.854902, 0.52549, 0.243137, 1)
+theme_override_colors/font_outline_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_o8hsu")
 text = "x1"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -78,3 +636,72 @@ layout_mode = 0
 offset_right = 3520.0
 offset_bottom = 2160.0
 mouse_filter = 2
+
+[node name="ScoreHand" type="Node2D" parent="."]
+
+[node name="HealthHandAnimPlayer" type="AnimationPlayer" parent="ScoreHand"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_8y86x")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="ScoreHand"]
+position = Vector2(985, 475)
+texture = ExtResource("3_gjfyq")
+
+[node name="ThumbBlood" type="CPUParticles2D" parent="ScoreHand"]
+position = Vector2(871, 491)
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 27.82
+spread = 55.29
+gravity = Vector2(-50, 0)
+scale_amount_min = 0.0
+scale_amount_max = 11.1
+color = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="PointerBlood" type="CPUParticles2D" parent="ScoreHand"]
+position = Vector2(929, 393)
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 27.82
+spread = 55.29
+gravity = Vector2(-50, -50)
+scale_amount_min = 0.0
+scale_amount_max = 11.1
+color = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="MiddleBlood" type="CPUParticles2D" parent="ScoreHand"]
+position = Vector2(1005, 378)
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 27.82
+spread = 55.29
+gravity = Vector2(0, -100)
+scale_amount_min = 0.0
+scale_amount_max = 11.1
+color = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="PinkyBlood" type="CPUParticles2D" parent="ScoreHand"]
+position = Vector2(1069, 387)
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 27.82
+spread = 55.29
+gravity = Vector2(25, -100)
+scale_amount_min = 0.0
+scale_amount_max = 11.1
+color = Color(0.647059, 0.188235, 0.188235, 1)
+
+[node name="StumpBlood" type="CPUParticles2D" parent="ScoreHand"]
+position = Vector2(988, 442)
+amount = 250
+emission_shape = 1
+emission_sphere_radius = 40.44
+spread = 180.0
+gravity = Vector2(25, -100)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_amount_min = 0.0
+scale_amount_max = 11.1
+color = Color(0.647059, 0.188235, 0.188235, 1)
