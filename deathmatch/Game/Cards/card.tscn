@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://h4hs4rtdq0aa"]
+[gd_scene load_steps=58 format=3 uid="uid://h4hs4rtdq0aa"]
 
 [ext_resource type="Script" uid="uid://dqog5m8quisxg" path="res://Game/Cards/cardButton.gd" id="1_ayre0"]
 [ext_resource type="Script" uid="uid://d0mmq2inlb2s1" path="res://Scripts/TextureSpritesFrames/texture_sprite_frames.gd" id="2_0korm"]
@@ -262,6 +262,22 @@ region = Rect2(0, 640, 160, 160)
 atlas = ExtResource("3_ipob6")
 region = Rect2(160, 640, 160, 160)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_03spr"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(320, 640, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65t51"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(480, 640, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql52v"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(0, 800, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e214k"]
+atlas = ExtResource("3_ipob6")
+region = Rect2(160, 800, 160, 160)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ea5a1"]
 animations = [{
 "frames": [{
@@ -318,6 +334,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j67gl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03spr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65t51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql52v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e214k")
 }],
 "loop": true,
 "name": &"icons",

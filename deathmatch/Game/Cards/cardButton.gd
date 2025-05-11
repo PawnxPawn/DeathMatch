@@ -13,18 +13,26 @@ signal card_flipped(Button)
 @onready var face_texture: TextureSpriteFrames = $CardTexture/FaceTexture
 @onready var card_texture: TextureSpriteFrames = $CardTexture
 
+enum TrapCard {
+	TRAP_LOSE_TIME = 18,
+	TRAP_RESHUFFLE = 19,
+	TRAP_HEAL = 20,
+	TRAP_LOSE_LIFE = 21,
+}
+
 var is_flipped:bool = false
+var is_trap_card:bool = false
+var trap_card_index_start:int = 18
+
 
 func _ready() -> void:
 	update_icon_id(icon_id)
 
 
-## Gets the sprite frames count  from the face texture
 func get_face_texture_frame_count() -> int:
 	return face_texture.sprite_frames.get_frame_count(&"icons")
 
 
-## Updates the icon on card
 func update_icon_id(id:int) -> void:
 	icon_id = id
 	face_texture.frame_index = icon_id
@@ -40,5 +48,6 @@ func disable_card() -> void:
 	disabled = true
 
 
+# Emits a custom signal with the card that was clicked
 func _on_clicked() -> void:
 	card_flipped.emit(self)
