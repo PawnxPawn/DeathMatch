@@ -133,6 +133,7 @@ mouse_filter = 2
 [node name="Hud Layer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="Hud Layer" instance=ExtResource("5_jxerj")]
+visible = false
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true

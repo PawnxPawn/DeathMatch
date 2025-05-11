@@ -30,22 +30,27 @@ func _ready() -> void:
 	GameManager.reset_game()
 	_initialize_game()
 
+
 func _initialize_game() -> void:
 	_initialize_signals()
 	_initialize_cards()
+
 
 func _initialize_signals() -> void:
 	for child in card_area.get_children():
 		child.card_flipped.connect(_flip_selected_card)
 		child.mouse_entered.connect(_on_mouse_entered)
 		child.mouse_exited.connect(_on_mouse_exited)
+		child.animation_player.animation_finished.connect(_on_card_animation_finished)
+
 
 func _initialize_cards() -> void:
 	var card_ids: Array[int] = []
 	var icon_pool: Array[int] = []
 	var ids_to_get: int = int(card_area.get_child_count() / 2.0)
+	var face_count_no_trap: int = card_ref.get_face_texture_frame_count() - 4
 
-	for i in range(card_ref.get_face_texture_frame_count()):
+	for i in range(face_count_no_trap):
 		icon_pool.append(i)
 
 	for i in range(ids_to_get):
@@ -55,11 +60,13 @@ func _initialize_cards() -> void:
 	
 	_assign_ids(card_ids)
 
+
 func _get_id_from_pool(pool: Array[int]) -> int:
 	var random_index = randi_range(0, pool.size() - 1)
 	var value_to_return = pool[random_index]
 	pool.erase(value_to_return)
 	return value_to_return
+
 
 func _assign_ids(card_ids: Array[int]) -> void:
 	for child in card_area.get_children():
@@ -71,6 +78,7 @@ func _assign_ids(card_ids: Array[int]) -> void:
 		child.update_icon_id(_get_id_from_pool(card_ids))
 #endregion
 
+
 #region Card interactions
 func _flip_selected_card(card: Button) -> void:
 	if card_compare.size() >= 2 or card.is_flipped or card.animation_player.is_playing():
@@ -79,6 +87,7 @@ func _flip_selected_card(card: Button) -> void:
 	sound.play_sfx(sound.card_flip_sfx)
 
 	card_compare.append(card)
+	selector.hide()
 	card.is_flipped = true
 	card.animation_player.play(&"flip_card")
 
@@ -147,6 +156,10 @@ func _enable_disable_current_cards(card: Button) -> void:
 #region Selector movement
 func _on_mouse_entered() -> void:
 	_move_selector()
+
+func _on_card_animation_finished(animation_name: StringName) -> void:
+	if animation_name == &"flip_card":
+		_move_selector()
 
 func _on_mouse_exited() -> void:
 	pass
