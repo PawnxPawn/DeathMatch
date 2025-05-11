@@ -7,9 +7,9 @@ signal updated_values(health_update: int, score_update: int, multiplier_update: 
 @onready var death_timer : Timer = %DeathTimer
 
 enum GameDifficulty {
-	EASY,
-	NORMAL,
-	HARD
+	EASY = 0,
+	NORMAL = 1,
+	HARD = 2,
 }
 
 var knife_cursor = load("res://Assets/Cursor/selector_sword_crop.png")
@@ -57,7 +57,10 @@ var high_score:int
 
 
 func _ready() -> void:
-	# Set the default cursor
+	_set_default_cursor()
+
+
+func _set_default_cursor() -> void:
 	Input.set_custom_mouse_cursor(standard_cursor, Input.CURSOR_ARROW, Vector2(12, 9))
 
 
@@ -71,9 +74,11 @@ func reset_game() -> void:
 func end_game(has_won:bool) -> void:
 	has_won_game = has_won
 	high_score = score if score > high_score else high_score
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if (!has_won):
 		death_timer.start()
 		await death_timer.timeout
 	get_tree().change_scene_to_file(_end_game_scene)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	print(high_score)
 	pass

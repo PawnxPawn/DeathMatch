@@ -21,6 +21,7 @@ extends Node2D
 
 #region Card tracking
 var cards_at_play: Array[Button]
+var cards_left_on_field: Array[Button]
 var found_pairs: Array[Button]
 var card_compare: Array[Button]
 var seen_cards: Array[Button]
@@ -83,7 +84,10 @@ func _get_trap_card_count() -> int:
 	
 
 func _set_trap_cards() -> int:
-			return randi_range(card_ref.trap_card_index_start, card_ref.get_face_texture_frame_count() -1)
+	var random_int:int = randi_range(card_ref.trap_card_index_start, card_ref.get_face_texture_frame_count() -1)
+	while random_int == 18:
+		random_int = randi_range(card_ref.trap_card_index_start, card_ref.get_face_texture_frame_count() -1)
+	return random_int
 
 
 func _get_id_from_pool(pool: Array[int]) -> int:
@@ -107,6 +111,10 @@ func _assign_ids(card_ids: Array[int]) -> void:
 
 		if child.icon_id >= card_ref.trap_card_index_start:
 			child.is_trap_card = true
+	cards_left_on_field = cards_at_play.duplicate()
+	if traps_at_play.size() > 0:
+		cards_left_on_field.append(traps_at_play)
+
 #endregion
 
 
@@ -138,6 +146,11 @@ func _flip_selected_card(card: Button) -> void:
 
 func _run_trap_card(card: Button) -> void:
 	should_handle_trap = true
+	
+	for child in card_area.get_children():
+		_enable_disable_current_cards(child)
+	
+	trap_to_remove = card
 
 	match card.icon_id:
 		card.TrapCard.TRAP_LOSE_TIME:
@@ -145,7 +158,7 @@ func _run_trap_card(card: Button) -> void:
 			#_lose_time()
 		card.TrapCard.TRAP_RESHUFFLE:
 			print("Reshuffle trap card")
-			#_shuffle_cards()
+			_reshuffle_cards()
 		card.TrapCard.TRAP_HEAL:
 			print("Heal trap card")
 			GameManager.health += 1
@@ -153,12 +166,28 @@ func _run_trap_card(card: Button) -> void:
 			print("Lose life trap card")
 			GameManager.health -= 1
 
-	for child in card_area.get_children():
-		_enable_disable_current_cards(child)
-	
-	trap_to_remove = card
 
 	delay_timer.start()
+
+
+func _reshuffle_cards() -> void:
+	var card_pool_id: Array[int]
+
+	if not card_compare.is_empty():
+		for child in card_compare:
+			if child.is_flipped and not child.is_trap_card:
+				child.flip_card_back()
+		card_compare.clear()
+
+	seen_cards.clear()
+
+	for card in cards_left_on_field:
+		if not card.is_flipped:
+			card_pool_id.append(card.icon_id)
+    
+
+	for child in cards_left_on_field:
+		child.update_icon_id(_get_id_from_pool(card_pool_id))
 
 
 func _on_delay_timer_timeout() -> void:
@@ -172,6 +201,7 @@ func _on_delay_timer_timeout() -> void:
 func _handle_trap_card() -> void:
 	trap_to_remove.disable_card()
 	removed_trap_cards.append(trap_to_remove)
+	cards_left_on_field.erase(trap_to_remove)
 
 	for child in card_area.get_children():
 		_enable_disable_current_cards(child)
@@ -188,7 +218,6 @@ func _compare_cards() -> void:
 		_cards_matched()
 	else:
 		_cards_dont_match()
-	
 	
 	card_compare.clear()
 
@@ -208,6 +237,7 @@ func _cards_matched() -> void:
 	for i in card_compare:
 		i.disable_card()
 		found_pairs.append(i)
+		cards_left_on_field.erase(i)
 	
 	GameManager.score += score
 
