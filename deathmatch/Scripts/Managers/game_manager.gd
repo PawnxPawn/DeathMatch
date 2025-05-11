@@ -2,19 +2,34 @@ extends Node
 
 signal updated_values(health_update: int, score_update: int, multiplier_update: int)
 
+
+
+@onready var death_timer : Timer = %DeathTimer
+
+enum GameDifficulty {
+	EASY,
+	NORMAL,
+	HARD
+}
+
 var knife_cursor = load("res://Assets/Cursor/selector_sword_crop.png")
 var standard_cursor = load("res://Assets/Cursor/Cursor.png")
 
 var has_won_game: bool = false
+var difficulty: GameDifficulty = GameDifficulty.NORMAL
 
 var _end_game_scene: StringName = &"uid://baq13tim2y7vx"
 
-@onready var death_timer : Timer = %DeathTimer
+const _MAX_HEALTH: int = 5
 
-var health: int = 5:
+var health: int = _MAX_HEALTH:
 	set (value):
+
 		health = value
-		if (health <= 0):
+
+		if (health > _MAX_HEALTH):
+			health = _MAX_HEALTH
+		elif (health <= 0):
 			health = 0
 			end_game(false)
 		updated_values.emit(health, score, chain_multiplier)
@@ -53,8 +68,6 @@ func reset_game() -> void:
 	chain_multiplier = 1
 
 
-
-##Game Won events
 func end_game(has_won:bool) -> void:
 	has_won_game = has_won
 	high_score = score if score > high_score else high_score
