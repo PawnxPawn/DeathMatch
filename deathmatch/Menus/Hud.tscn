@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://clmuqidjeeljp"]
 
 [ext_resource type="Script" uid="uid://hjy2dy8b5e4o" path="res://Menus/hud.gd" id="1_efy7n"]
-[ext_resource type="FontFile" uid="uid://clmcvx0sjqi8x" path="res://Assets/Font/times-new-pixel.otf" id="3_o8hsu"]
+[ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="2_gjfyq"]
 [ext_resource type="Texture2D" uid="uid://tlfs86eearwv" path="res://Assets/Health_Hands/HandHealth.png" id="9_lckxr"]
 [ext_resource type="Texture2D" uid="uid://cefhpspubxle2" path="res://Assets/Health_Hands/Hand_set.png" id="10_1pglm"]
 
@@ -720,7 +720,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("3_o8hsu")
+theme_override_fonts/font = ExtResource("2_gjfyq")
 text = "Score:"
 
 [node name="ScoreLabel" type="Label" parent="PanelContainer/VBoxContainer/Score"]
@@ -733,7 +733,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("3_o8hsu")
+theme_override_fonts/font = ExtResource("2_gjfyq")
 text = "0"
 
 [node name="Multiplier" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -749,7 +749,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("3_o8hsu")
+theme_override_fonts/font = ExtResource("2_gjfyq")
 text = "Multiplier:"
 
 [node name="MultiplierLabel" type="Label" parent="PanelContainer/VBoxContainer/Multiplier"]
@@ -762,7 +762,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("3_o8hsu")
+theme_override_fonts/font = ExtResource("2_gjfyq")
 text = "x1"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

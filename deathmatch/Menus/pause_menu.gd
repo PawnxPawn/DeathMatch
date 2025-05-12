@@ -1,5 +1,7 @@
 extends Control
 
+@onready var credits = "uid://bvcy6tqectio2" #credits.tscn
+
 @export var main_menu: PackedScene
 @export var settings_menu: Control
 @export var pause_menu_control: Control
@@ -42,8 +44,8 @@ func _on_settings_button_pressed() -> void:
 func _on_settings_menu_return_control() -> void:
 	show_hide()
 
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+func _on_credits_button_pressed() -> void:
+	get_tree().change_scene_to_file(credits)
 
 
 func _on_mouse_entered() -> void:

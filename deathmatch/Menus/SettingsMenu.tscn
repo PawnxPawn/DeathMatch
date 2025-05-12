@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drpaxx3da40cr" path="res://Menus/settings_menu.gd" id="1_8x3wo"]
 [ext_resource type="Script" uid="uid://doa6b45eovwep" path="res://Menus/master_volume.gd" id="1_safvx"]
-[ext_resource type="FontFile" uid="uid://clmcvx0sjqi8x" path="res://Assets/Font/times-new-pixel.otf" id="2_6r630"]
+[ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="4_4aufd"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="4_re3ym"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_re3ym"]
@@ -40,10 +40,14 @@ layout_mode = 2
 
 [node name="SettingsLabel" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6r630")
+theme_override_fonts/font = ExtResource("4_4aufd")
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Seperator" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
 
 [node name="MasterVolume" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
 layout_mode = 2
@@ -53,7 +57,7 @@ volume_slider = NodePath("MasterSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6r630")
+theme_override_fonts/font = ExtResource("4_4aufd")
 text = "Main Volume"
 
 [node name="MasterSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
@@ -61,6 +65,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.001
+
+[node name="Seperator2" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
 
 [node name="MusicVolume" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
 layout_mode = 2
@@ -70,7 +78,7 @@ volume_slider = NodePath("MusicSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6r630")
+theme_override_fonts/font = ExtResource("4_4aufd")
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
@@ -78,6 +86,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.001
+
+[node name="Seperator3" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
 
 [node name="SFXSlider" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
 layout_mode = 2
@@ -87,7 +99,7 @@ volume_slider = NodePath("SFXSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6r630")
+theme_override_fonts/font = ExtResource("4_4aufd")
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
@@ -96,10 +108,18 @@ size_flags_horizontal = 3
 max_value = 1.0
 step = 0.001
 
+[node name="Seperator4" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
 [node name="ReturnButton" type="Button" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6r630")
+theme_override_fonts/font = ExtResource("4_4aufd")
 text = "Return"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
 
 [node name="Selector" parent="." instance=ExtResource("4_re3ym")]
 visible = false
