@@ -46,10 +46,6 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	#selector.hide()
 	pass
-	
 
-#func _on_return_button_mouse_entered() -> void:
-#	GameManager.change_cursor(true)
-
-#func _on_return_button_mouse_exited() -> void:
-#	GameManager.change_cursor(false)
+func _on_godot_license_pressed() -> void:
+	OS.shell_open("")

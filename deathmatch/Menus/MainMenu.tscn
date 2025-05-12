@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bdmlspewkwo5s"]
 
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
+[ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="2_1txdl"]
 [ext_resource type="Texture2D" uid="uid://c812hydhblg28" path="res://Assets/UI/Death_Match_Title.png" id="2_7ihqj"]
-[ext_resource type="FontFile" uid="uid://clmcvx0sjqi8x" path="res://Assets/Font/times-new-pixel.otf" id="2_n6o36"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="5_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Scripts/SettingsLoader/SettingsLoader.tscn" id="6_0xbyl"]
@@ -65,19 +65,27 @@ layout_mode = 2
 
 [node name="PlayGameButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_n6o36")
+theme_override_fonts/font = ExtResource("2_1txdl")
 text = "Play Game"
+
+[node name="Seperator" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
 
 [node name="SettingsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_n6o36")
+theme_override_fonts/font = ExtResource("2_1txdl")
 text = "Settings
 "
 
-[node name="ExitButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+[node name="Seperator2" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_n6o36")
-text = "Exit
+theme_override_constants/margin_top = 30
+
+[node name="CreditsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1txdl")
+text = "Credits
 "
 
 [node name="Title" type="TextureRect" parent="MainMenuControl"]
@@ -112,12 +120,9 @@ layout_mode = 0
 [node name="SoundManager" parent="." instance=ExtResource("7_1txdl")]
 
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_exited"]
 [connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
 [connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/ExitButton" to="." method="_on_exit_button_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/ExitButton" to="." method="_on_exit_button_mouse_exited"]
-[connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="return_control" from="SettingsMenu" to="." method="_on_settings_menu_return_control"]

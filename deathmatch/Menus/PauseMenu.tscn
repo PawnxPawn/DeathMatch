@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c60177svo8by6" path="res://Menus/pause_menu.gd" id="1_qnjt8"]
 [ext_resource type="PackedScene" uid="uid://bdmlspewkwo5s" path="res://Menus/MainMenu.tscn" id="2_hnfxo"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_o0cs5"]
-[ext_resource type="FontFile" uid="uid://clmcvx0sjqi8x" path="res://Assets/Font/times-new-pixel.otf" id="3_wpn1c"]
+[ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="3_t2718"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="5_t2718"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("settings_menu", "pause_menu_control", "selector")]
@@ -54,37 +54,53 @@ layout_mode = 2
 [node name="PauseLabel" type="Label" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wpn1c")
+theme_override_fonts/font = ExtResource("3_t2718")
 text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Seperator" type="MarginContainer" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
 [node name="ResumeButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wpn1c")
+theme_override_fonts/font = ExtResource("3_t2718")
 text = "Resume
 "
+
+[node name="Seperator2" type="MarginContainer" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
 
 [node name="MainMenuButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wpn1c")
+theme_override_fonts/font = ExtResource("3_t2718")
 text = "Main Menu
 "
+
+[node name="Seperator3" type="MarginContainer" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
 
 [node name="SettingsButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wpn1c")
+theme_override_fonts/font = ExtResource("3_t2718")
 text = "Settings
 "
 
-[node name="ExitButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
+[node name="Seperator4" type="MarginContainer" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="CreditsButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wpn1c")
-text = "Exit"
+theme_override_fonts/font = ExtResource("3_t2718")
+text = "Credits"
 
 [node name="SettingsMenu" parent="." node_paths=PackedStringArray("volume_sliders") instance=ExtResource("2_o0cs5")]
 process_mode = 3
@@ -105,6 +121,6 @@ layout_mode = 0
 [connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="mouse_entered" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/SettingsButton" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="mouse_entered" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/ExitButton" to="." method="_on_mouse_entered"]
-[connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/CreditsButton" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="return_control" from="SettingsMenu" to="." method="_on_settings_menu_return_control"]

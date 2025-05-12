@@ -1,6 +1,7 @@
 extends Control
 
 @onready var level_0 = "res://Game/Game.tscn"
+@onready var credits = "uid://bvcy6tqectio2" #credits.tscn
 @onready var vbox_container: VBoxContainer = %MenuContainer
 @onready var sound: Node = $SoundManager
 
@@ -39,8 +40,6 @@ func _on_hover_set_selector() -> void:
 	selector.show()
 
 
-
-
 func _on_settings_button_pressed() -> void:
 	selector.hide()
 	show_hide()
@@ -50,32 +49,21 @@ func _on_settings_menu_return_control() -> void:
 	show_hide()
 
 
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+func _on_credits_button_pressed() -> void:
+	get_tree().change_scene_to_file(credits)
 
 
 func _on_play_game_button_mouse_entered() -> void:
 	_on_hover_set_selector()
-	pass
-
-
-func _on_play_game_button_mouse_exited() -> void:
-	pass
+	
 
 
 func _on_settings_button_mouse_entered() -> void:
 	_on_hover_set_selector()
-	pass
+	
 
-
-func _on_settings_button_mouse_exited() -> void:
-	pass
-
-
-func _on_exit_button_mouse_entered() -> void:
+func _on_credits_button_mouse_entered() -> void:
 	_on_hover_set_selector()
-	pass
+	
 
 
-func _on_exit_button_mouse_exited() -> void:
-	pass
