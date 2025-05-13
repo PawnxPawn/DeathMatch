@@ -53,6 +53,18 @@ var chain_multiplier: int = 1:
 	get:
 		return chain_multiplier
 
+var get_game_difficulty: StringName:
+	get:
+		match difficulty:
+			GameDifficulty.EASY:
+				return &"Easy"
+			GameDifficulty.NORMAL:
+				return &"Normal"
+			GameDifficulty.HARD:
+				return &"Hard"
+			_:
+				return &"ERROR"
+
 var high_score:int
 
 
@@ -62,6 +74,10 @@ func _ready() -> void:
 
 func _set_default_cursor() -> void:
 	Input.set_custom_mouse_cursor(standard_cursor, Input.CURSOR_ARROW, Vector2(12, 9))
+
+
+func update_difficulty() -> void:
+	difficulty = wrapi(difficulty + 1, 0, GameDifficulty.size()) as GameDifficulty
 
 
 func reset_game() -> void:

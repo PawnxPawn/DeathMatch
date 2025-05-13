@@ -23,8 +23,6 @@ func _string_to_png() -> void:
 
 
 func _set_alphabet_to_frame_index() -> void:
-	print("Intializing Alphabet.")
-	print(text.c_escape())
 	for c in text:
 		_text_frame_indexs.append(AlphabetToFrame._get_character_frame_index(c))
 	
@@ -35,8 +33,8 @@ func _add_hbox() -> void:
 	var separation_total: int = _default_seperation + seperation
 	var size_percentage = font_size/100.0
 	var new_size:Vector2 = Vector2(size_percentage, size_percentage)
+	
 	text_line.scale = new_size
-	print(separation_total)
 	text_line.name = "Line"
 	text_line.add_theme_constant_override("separation", separation_total)
 	add_child(text_line)
@@ -45,6 +43,7 @@ func _add_hbox() -> void:
 
 func _add_letters() -> void:
 	var count_loop:int = 0
+	
 	for i in _text_frame_indexs:
 		_letter_to_frame(i, text[count_loop])
 		count_loop += 1
@@ -52,6 +51,7 @@ func _add_letters() -> void:
 
 func _letter_to_frame(letter_index:int, letter:String = "") -> void:
 	var letter_sprite_frame: TextureSpriteFrames = alphabet_scene.instantiate()
+
 	letter_sprite_frame.frame_index = letter_index
 	letter_sprite_frame.name = letter + " Letter"
 	_current_hbox.add_child(letter_sprite_frame)

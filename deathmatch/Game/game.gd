@@ -113,7 +113,9 @@ func _assign_ids(card_ids: Array[int]) -> void:
 			child.is_trap_card = true
 	cards_left_on_field = cards_at_play.duplicate()
 	if traps_at_play.size() > 0:
-		cards_left_on_field.append(traps_at_play)
+		for c in traps_at_play:
+			print(c, ": ", c.icon_id)
+			cards_left_on_field.append(c)
 
 #endregion
 
@@ -184,10 +186,12 @@ func _reshuffle_cards() -> void:
 	for card in cards_left_on_field:
 		if not card.is_flipped:
 			card_pool_id.append(card.icon_id)
-    
+	
 
 	for child in cards_left_on_field:
+		if child == trap_to_remove: continue
 		child.update_icon_id(_get_id_from_pool(card_pool_id))
+		child.is_trap_card = child.icon_id >= card_ref.trap_card_index_start
 
 
 func _on_delay_timer_timeout() -> void:
@@ -207,10 +211,6 @@ func _handle_trap_card() -> void:
 		_enable_disable_current_cards(child)
 	
 	should_handle_trap = false
-
-	print("Health: %d" % GameManager.health)
-	print("Score: %d" % GameManager.score)
-	print("Multiplier: %d" % GameManager.chain_multiplier)
 
 
 func _compare_cards() -> void:
