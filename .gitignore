@@ -17,3 +17,4 @@ deathmatch/.vscode
 .vscode
 deathmatch/addons/Wwise/native/lib/win64/editor/profile/~libwwise.windows.editor.profile.dll
 deathmatch/deathmatch.code-workspace
+deathmatch/Assets/Font/license.txt
