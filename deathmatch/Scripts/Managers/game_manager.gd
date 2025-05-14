@@ -15,6 +15,7 @@ enum GameDifficulty {
 var knife_cursor = load("res://Assets/Cursor/selector_sword_crop.png")
 var standard_cursor = load("res://Assets/Cursor/Cursor.png")
 
+var is_credits_called: bool = false
 var has_won_game: bool = false
 var difficulty: GameDifficulty = GameDifficulty.NORMAL
 
@@ -77,7 +78,7 @@ func _set_default_cursor() -> void:
 
 
 func update_difficulty() -> void:
-	difficulty = wrapi(difficulty + 1, 0, GameDifficulty.size()) as GameDifficulty
+	difficulty = wrapi(difficulty + 1, 0, GameDifficulty.size() - 1) as GameDifficulty
 
 
 func reset_game() -> void:
