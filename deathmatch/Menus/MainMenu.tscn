@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdmlspewkwo5s"]
+[gd_scene load_steps=16 format=3 uid="uid://bdmlspewkwo5s"]
 
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
 [ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="2_1txdl"]
 [ext_resource type="Texture2D" uid="uid://c812hydhblg28" path="res://Assets/UI/Death_Match_Title.png" id="2_7ihqj"]
+[ext_resource type="Theme" uid="uid://jpfvg8vl6n2" path="res://Assets/Themes/NoTheme.tres" id="2_ju15h"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
+[ext_resource type="PackedScene" uid="uid://cjluut363x3eq" path="res://Scripts/TextToPNG/TextToPng.tscn" id="3_m16r1"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="5_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Scripts/SettingsLoader/SettingsLoader.tscn" id="6_0xbyl"]
 [ext_resource type="PackedScene" uid="uid://18717fkqsibr" path="res://Scripts/Managers/SoundManager/SoundManager.tscn" id="7_1txdl"]
@@ -11,6 +13,94 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_n6o36"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ncg0"]
+
+[sub_resource type="Animation" id="Animation_ju15h"]
+resource_name = "MainMenuFadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Selector:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sulrv"]
+resource_name = "MainMenuFadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selector:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenuControl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0bjyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Selector:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kkds"]
+_data = {
+&"MainMenuFadeIn": SubResource("Animation_ju15h"),
+&"MainMenuFadeOut": SubResource("Animation_sulrv"),
+&"RESET": SubResource("Animation_0bjyp")
+}
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_menu", "main_menu_control", "selector")]
 process_mode = 3
@@ -24,6 +114,8 @@ script = ExtResource("1_3g7qx")
 settings_menu = NodePath("SettingsMenu")
 main_menu_control = NodePath("MainMenuControl")
 selector = NodePath("Selector")
+selector_offset = Vector2(75, 15)
+metadata/_edit_vertical_guides_ = [471.0, 683.0]
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.0352941, 0.0392157, 0.0784314, 1)
@@ -36,6 +128,7 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_n6o36")
 
 [node name="MainMenuControl" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,33 +153,126 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 244.395)
 layout_mode = 2
 
 [node name="PlayGameButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+theme = ExtResource("2_ju15h")
 theme_override_fonts/font = ExtResource("2_1txdl")
-text = "Play Game"
+
+[node name="TextToPNG" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" instance=ExtResource("3_m16r1")]
+clip_contents = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -11.0
+offset_right = 99.0
+offset_bottom = 55.0
+mouse_filter = 2
+text = "Play"
+
+[node name="TextToPNG2" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" instance=ExtResource("3_m16r1")]
+clip_contents = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 95.0
+offset_right = 327.0
+offset_bottom = 55.0
+grow_horizontal = 1
+grow_vertical = 1
+mouse_filter = 2
+text = "Game"
+seperation = 15
+
+[node name="Difficulty" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 25.5
+offset_right = 60.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.491976, 0.491976, 0.491976, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1txdl")
+theme_override_font_sizes/font_size = 12
+text = "Difficulty"
 
 [node name="Seperator" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 30
 
 [node name="SettingsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+theme = ExtResource("2_ju15h")
 theme_override_fonts/font = ExtResource("2_1txdl")
-text = "Settings
-"
+
+[node name="TextToPNG" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" instance=ExtResource("3_m16r1")]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -27.5
+offset_right = 83.0
+offset_bottom = 27.5
+mouse_filter = 2
+text = "Settings"
+seperation = -10
 
 [node name="Seperator2" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 30
 
 [node name="CreditsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+theme = ExtResource("2_ju15h")
 theme_override_fonts/font = ExtResource("2_1txdl")
-text = "Credits
-"
+
+[node name="TextToPNG" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/CreditsButton" instance=ExtResource("3_m16r1")]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -27.5
+offset_right = 94.0
+offset_bottom = 27.5
+mouse_filter = 2
+text = "Credits"
+seperation = -10
 
 [node name="Title" type="TextureRect" parent="MainMenuControl"]
 layout_mode = 1
@@ -113,14 +299,22 @@ volume_sliders = {
 
 [node name="Selector" parent="." instance=ExtResource("5_5ncg0")]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
 [node name="SettingsLoader" parent="." instance=ExtResource("6_0xbyl")]
 
 [node name="SoundManager" parent="." instance=ExtResource("7_1txdl")]
 
+[node name="MainMenuPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5kkds")
+}
+
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
 [connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton/Difficulty" to="." method="_change_difficulty"]
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
 [connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]

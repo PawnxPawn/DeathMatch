@@ -41,6 +41,7 @@ func update_icon_id(id:int) -> void:
 func flip_card_back() -> void:
 	is_flipped = false
 	animation_player.play_backwards(&"flip_card")
+	await animation_player.animation_finished
 
 
 func disable_card() -> void:

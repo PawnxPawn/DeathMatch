@@ -1,8 +1,10 @@
 extends Control
 
 @onready var level_0 = "res://Game/Game.tscn"
-@onready var credits = "uid://bvcy6tqectio2" #credits.tscn
+@onready var credits = "uid://baq13tim2y7vx" #EndScreen.tscn
 @onready var vbox_container: VBoxContainer = %MenuContainer
+@onready var difficulty_button: Button = %Difficulty
+@onready var main_menu_player: AnimationPlayer = %MainMenuPlayer
 @onready var sound: Node = $SoundManager
 
 @export var settings_menu: Control
@@ -13,7 +15,17 @@ extends Control
 @export var selector_offset: Vector2
 
 
+func _ready() -> void:
+	difficulty_button.text = GameManager.get_game_difficulty
+	main_menu_player.play("MainMenuFadeIn")
+
+
+func _animation_fade_out() -> void:
+	main_menu_player.play("MainMenuFadeOut")
+	await main_menu_player.animation_finished
+
 func _on_play_game_button_pressed() -> void:
+	await _animation_fade_out()
 	get_tree().change_scene_to_file(level_0)
 	
 
@@ -31,14 +43,18 @@ func _on_hover_set_selector() -> void:
 		if child is Button and child.get_global_rect().has_point(mouse_pos):
 			node = child
 			break
-	
+
+	if not node: return
+		
 	var node_center_point: Vector2 = node.get_global_rect().position
 	node_center_point.x -= node.get_global_rect().size.x
-
 
 	selector.set_selector_position(node_center_point, selector_offset)
 	selector.show()
 
+func _change_difficulty() -> void:
+	GameManager.update_difficulty()
+	difficulty_button.text = GameManager.get_game_difficulty
 
 func _on_settings_button_pressed() -> void:
 	selector.hide()
@@ -50,6 +66,8 @@ func _on_settings_menu_return_control() -> void:
 
 
 func _on_credits_button_pressed() -> void:
+	GameManager.is_credits_called = true
+	await _animation_fade_out()
 	get_tree().change_scene_to_file(credits)
 
 
@@ -65,5 +83,3 @@ func _on_settings_button_mouse_entered() -> void:
 func _on_credits_button_mouse_entered() -> void:
 	_on_hover_set_selector()
 	
-
-

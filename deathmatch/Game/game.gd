@@ -3,6 +3,7 @@ extends Node2D
 #region Node references
 @onready var card_area: GridContainer = %CardArea
 @onready var card_ref: Button = %"CardArea/CardR1C1" # TODO: Get Card Ref differently
+@onready var game_player: AnimationPlayer = %GamePlayer
 @onready var delay_timer: Timer = $DelayTimer
 @onready var sound: Node = $SoundManager
 #endregion
@@ -44,6 +45,7 @@ func _ready() -> void:
 func _initialize_game() -> void:
 	_initialize_signals()
 	_initialize_cards()
+	game_player.play("GameFadeIn")
 
 
 func _initialize_signals() -> void:
@@ -113,7 +115,9 @@ func _assign_ids(card_ids: Array[int]) -> void:
 			child.is_trap_card = true
 	cards_left_on_field = cards_at_play.duplicate()
 	if traps_at_play.size() > 0:
-		cards_left_on_field.append(traps_at_play)
+		for c in traps_at_play:
+			print(c, ": ", c.icon_id)
+			cards_left_on_field.append(c)
 
 #endregion
 
@@ -158,6 +162,7 @@ func _run_trap_card(card: Button) -> void:
 			#_lose_time()
 		card.TrapCard.TRAP_RESHUFFLE:
 			print("Reshuffle trap card")
+			await _check_if_card_animation_is_playing(card)
 			_reshuffle_cards()
 		card.TrapCard.TRAP_HEAL:
 			print("Heal trap card")
@@ -170,13 +175,18 @@ func _run_trap_card(card: Button) -> void:
 	delay_timer.start()
 
 
+func _check_if_card_animation_is_playing(card:Button) -> void:
+	if card.animation_player.is_playing():
+		await card.animation_player.animation_finished
+
+
 func _reshuffle_cards() -> void:
 	var card_pool_id: Array[int]
 
 	if not card_compare.is_empty():
 		for child in card_compare:
 			if child.is_flipped and not child.is_trap_card:
-				child.flip_card_back()
+				await child.flip_card_back()
 		card_compare.clear()
 
 	seen_cards.clear()
@@ -184,10 +194,12 @@ func _reshuffle_cards() -> void:
 	for card in cards_left_on_field:
 		if not card.is_flipped:
 			card_pool_id.append(card.icon_id)
-    
+	
 
 	for child in cards_left_on_field:
+		if child == trap_to_remove: continue
 		child.update_icon_id(_get_id_from_pool(card_pool_id))
+		child.is_trap_card = child.icon_id >= card_ref.trap_card_index_start
 
 
 func _on_delay_timer_timeout() -> void:
@@ -207,10 +219,6 @@ func _handle_trap_card() -> void:
 		_enable_disable_current_cards(child)
 	
 	should_handle_trap = false
-
-	print("Health: %d" % GameManager.health)
-	print("Score: %d" % GameManager.score)
-	print("Multiplier: %d" % GameManager.chain_multiplier)
 
 
 func _compare_cards() -> void:
