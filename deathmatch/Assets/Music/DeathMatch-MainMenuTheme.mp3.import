@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/DeathMatch-MainMenuTheme.mp3-b575d73a2589574d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

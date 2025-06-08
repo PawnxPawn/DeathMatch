@@ -24,8 +24,11 @@ var is_flipped:bool = false
 var is_trap_card:bool = false
 var trap_card_index_start:int = 18
 
+var card_count = 0
+
 
 func _ready() -> void:
+	card_count += 1
 	update_icon_id(icon_id)
 
 

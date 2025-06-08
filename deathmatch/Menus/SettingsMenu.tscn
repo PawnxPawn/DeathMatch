@@ -18,8 +18,17 @@ script = ExtResource("1_8x3wo")
 selector = NodePath("Selector")
 volume_sliders = {
 "master_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider"),
-"music_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider")
+"music_volume": NodePath("")
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.435294)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 3
@@ -70,43 +79,9 @@ step = 0.001
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="MusicVolume" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
-layout_mode = 2
-script = ExtResource("1_safvx")
-bus_name = "Music"
-volume_slider = NodePath("MusicSlider")
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_4aufd")
-text = "Music Volume"
-
-[node name="MusicSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.001
-
 [node name="Seperator3" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
-
-[node name="SFXSlider" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
-layout_mode = 2
-script = ExtResource("1_safvx")
-bus_name = "SFX"
-volume_slider = NodePath("SFXSlider")
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_4aufd")
-text = "SFX Volume"
-
-[node name="SFXSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.001
 
 [node name="Seperator4" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
 layout_mode = 2
@@ -128,12 +103,6 @@ layout_mode = 0
 [connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider" to="." method="_on_mouse_exited"]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider" to="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume" method="_on_volume_slider_value_changed"]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider" to="." method="_on_mouse_exited"]
-[connection signal="value_changed" from="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider" to="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume" method="_on_volume_slider_value_changed"]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider/SFXSlider" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider/SFXSlider" to="." method="_on_mouse_exited"]
-[connection signal="value_changed" from="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider/SFXSlider" to="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider" method="_on_volume_slider_value_changed"]
 [connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/ReturnButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/ReturnButton" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/SettingsMenuContainer/ReturnButton" to="." method="_on_return_button_pressed"]

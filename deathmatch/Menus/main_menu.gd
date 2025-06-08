@@ -5,8 +5,6 @@ extends Control
 @onready var vbox_container: VBoxContainer = %MenuContainer
 @onready var difficulty_button: Button = %Difficulty
 @onready var main_menu_player: AnimationPlayer = %MainMenuPlayer
-@onready var sound: Node = $SoundManager
-
 @export var settings_menu: Control
 @export var main_menu_control: Control
 
@@ -16,6 +14,11 @@ extends Control
 
 
 func _ready() -> void:
+	if AudioManager.game_music.is_playing():
+		AudioManager.game_music.stop()
+	if not AudioManager.main_menu_music.is_playing():
+		AudioManager.main_menu_music.play()
+
 	difficulty_button.text = GameManager.get_game_difficulty
 	main_menu_player.play("MainMenuFadeIn")
 
@@ -35,7 +38,7 @@ func show_hide() -> void:
 
 
 func _on_hover_set_selector() -> void:
-	sound.play_sfx(sound.hover_sfx)
+	
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var node: Node
 	

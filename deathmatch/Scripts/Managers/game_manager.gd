@@ -18,6 +18,7 @@ var standard_cursor = load("res://Assets/Cursor/Cursor.png")
 var is_credits_called: bool = false
 var has_won_game: bool = false
 var difficulty: GameDifficulty = GameDifficulty.NORMAL
+var was_called_from_main_menu: bool = false
 
 var _end_game_scene: StringName = &"uid://baq13tim2y7vx"
 

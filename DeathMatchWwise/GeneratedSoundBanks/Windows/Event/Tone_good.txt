@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	582223787	Tone_good			\Default Work Unit\Tone_good	
-
-Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
-	846674689	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\Default Work Unit\Tone Good\Tone Generator	
-

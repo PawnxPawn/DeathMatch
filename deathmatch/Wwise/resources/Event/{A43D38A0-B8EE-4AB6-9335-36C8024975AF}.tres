@@ -1,7 +1,0 @@
-[gd_resource type="WwiseEvent" format=3 uid="uid://25dn0mclklby"]
-
-[resource]
-name = "Lost_Life"
-id = 3340225156
-guid = "{A43D38A0-B8EE-4AB6-9335-36C8024975AF}"
-dummy = true

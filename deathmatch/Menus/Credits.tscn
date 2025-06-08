@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvcy6tqectio2"]
+[gd_scene load_steps=6 format=3 uid="uid://bvcy6tqectio2"]
 
-[ext_resource type="Script" path="res://Menus/credits.gd" id="1_lw8m3"]
+[ext_resource type="Script" uid="uid://ddvac7tf3n47x" path="res://Menus/credits.gd" id="1_lw8m3"]
 [ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="2_lw8m3"]
 [ext_resource type="PackedScene" uid="uid://cjluut363x3eq" path="res://Scripts/TextToPNG/TextToPng.tscn" id="2_m6n7f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7jex"]
 bg_color = Color(0, 0, 0, 0.435294)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lw8m3"]
+font = ExtResource("2_lw8m3")
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -109,18 +112,6 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 30
 
-[node name="Doom3" type="Label" parent="CreditsPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_lw8m3")
-text = "Axtadar - Sound Effects"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Seperator5" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 30
-
 [node name="CenterContainer" type="CenterContainer" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
@@ -131,5 +122,15 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
 theme_override_fonts/font = ExtResource("2_lw8m3")
 text = "Godot Engine License"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 585.0
+offset_right = 670.0
+offset_bottom = 608.0
+pivot_offset = Vector2(104, 11)
+text = "Press ANY key"
+label_settings = SubResource("LabelSettings_lw8m3")
 
 [connection signal="pressed" from="CreditsPanel/VBoxContainer/CenterContainer/GodotLicense" to="." method="_on_godot_license_pressed"]
