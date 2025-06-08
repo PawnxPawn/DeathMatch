@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7st0qp6rfab5"]
+
+[ext_resource type="AudioStream" uid="uid://dka0k8woguwts" path="res://Assets/Music/DeathMatch-MainMenuTheme.mp3" id="1_6lfb4"]
+[ext_resource type="Script" uid="uid://s8mgugshgbk8" path="res://Scripts/Managers/SoundManager/audio_manager.gd" id="1_ccfn5"]
+[ext_resource type="AudioStream" uid="uid://b0shbac3sj4bc" path="res://Assets/Music/DeathMatch-background-music-loopable-v2.mp3" id="2_dxh6x"]
+[ext_resource type="AudioStream" uid="uid://b7yvmmd554r7v" path="res://Assets/Music/DeathMatch-Lose-Jingle.mp3" id="3_ccfn5"]
+[ext_resource type="AudioStream" uid="uid://b4q5syqf6vywv" path="res://Assets/Music/DeathMatch-Win-Jingle.mp3" id="4_1pebx"]
+[ext_resource type="AudioStream" uid="uid://b5l2bdnx3jbl6" path="res://Assets/Music/TickTockDungeonCards-doubletime-loop.mp3" id="5_dxh6x"]
+
+[node name="AudioManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_ccfn5")
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_6lfb4")
+volume_db = -35.0
+parameters/looping = true
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dxh6x")
+volume_db = -35.0
+parameters/looping = true
+
+[node name="LoseJingleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ccfn5")
+volume_db = -30.0
+
+[node name="WinJingleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1pebx")
+volume_db = -30.0
+
+[node name="GameDoubleTimeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dxh6x")
+volume_db = -30.0
+parameters/looping = true

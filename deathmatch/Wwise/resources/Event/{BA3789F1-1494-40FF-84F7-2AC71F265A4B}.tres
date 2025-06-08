@@ -1,7 +1,0 @@
-[gd_resource type="WwiseEvent" format=3 uid="uid://cke30ffvgiykg"]
-
-[resource]
-name = "Test_tone_event"
-id = 3932058257
-guid = "{BA3789F1-1494-40FF-84F7-2AC71F265A4B}"
-dummy = true

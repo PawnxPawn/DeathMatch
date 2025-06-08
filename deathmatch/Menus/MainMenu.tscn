@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdmlspewkwo5s"]
+[gd_scene load_steps=15 format=3 uid="uid://bdmlspewkwo5s"]
 
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
 [ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="2_1txdl"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cjluut363x3eq" path="res://Scripts/TextToPNG/TextToPng.tscn" id="3_m16r1"]
 [ext_resource type="PackedScene" uid="uid://drp0qspxr64n0" path="res://Menus/Selector/Selector.tscn" id="5_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Scripts/SettingsLoader/SettingsLoader.tscn" id="6_0xbyl"]
-[ext_resource type="PackedScene" uid="uid://18717fkqsibr" path="res://Scripts/Managers/SoundManager/SoundManager.tscn" id="7_1txdl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_n6o36"]
 
@@ -294,7 +293,7 @@ visible = false
 layout_mode = 1
 volume_sliders = {
 "master_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider"),
-"music_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider")
+"music_volume": null
 }
 
 [node name="Selector" parent="." instance=ExtResource("5_5ncg0")]
@@ -303,8 +302,6 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
 [node name="SettingsLoader" parent="." instance=ExtResource("6_0xbyl")]
-
-[node name="SoundManager" parent="." instance=ExtResource("7_1txdl")]
 
 [node name="MainMenuPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

@@ -92,23 +92,13 @@ theme_override_fonts/font = ExtResource("3_t2718")
 text = "Settings
 "
 
-[node name="Seperator4" type="MarginContainer" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 20
-
-[node name="CreditsButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
-process_mode = 3
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_t2718")
-text = "Credits"
-
 [node name="SettingsMenu" parent="." node_paths=PackedStringArray("volume_sliders") instance=ExtResource("2_o0cs5")]
 process_mode = 3
 visible = false
 layout_mode = 1
 volume_sliders = {
 "master_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider"),
-"music_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider")
+"music_volume": null
 }
 
 [node name="Selector" parent="." instance=ExtResource("5_t2718")]
@@ -121,6 +111,4 @@ layout_mode = 0
 [connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="mouse_entered" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/SettingsButton" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="mouse_entered" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/CreditsButton" to="." method="_on_mouse_entered"]
-[connection signal="pressed" from="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="return_control" from="SettingsMenu" to="." method="_on_settings_menu_return_control"]

@@ -5,7 +5,6 @@ extends Node2D
 @onready var card_ref: Button = %"CardArea/CardR1C1" # TODO: Get Card Ref differently
 @onready var game_player: AnimationPlayer = %GamePlayer
 @onready var delay_timer: Timer = $DelayTimer
-@onready var sound: Node = $SoundManager
 #endregion
 
 #region Game variables
@@ -38,6 +37,10 @@ var should_handle_trap: bool = false
 
 #region Initialization
 func _ready() -> void:
+	if AudioManager.main_menu_music.is_playing():
+		AudioManager.main_menu_music.stop()
+	
+	AudioManager.game_music.play()
 	GameManager.reset_game()
 	_initialize_game()
 
@@ -127,7 +130,6 @@ func _flip_selected_card(card: Button) -> void:
 	if card_compare.size() >= 2 or card.is_flipped or card.animation_player.is_playing():
 		return
 	
-	sound.play_sfx(sound.card_flip_sfx)
 
 	selector.hide()
 	card.is_flipped = true
@@ -241,7 +243,6 @@ func _compare_cards() -> void:
 
 
 func _cards_matched() -> void:
-	sound.play_sfx(sound.card_good_sfx)
 	for i in card_compare:
 		i.disable_card()
 		found_pairs.append(i)
@@ -251,7 +252,6 @@ func _cards_matched() -> void:
 
 
 func _cards_dont_match() -> void:
-	sound.play_sfx(sound.card_bad_sfx)
 
 	var has_seen_card: bool = false
 	GameManager.chain_multiplier = 1
@@ -266,7 +266,6 @@ func _cards_dont_match() -> void:
 		seen_cards.append(i)
 	
 	if has_seen_card:
-		sound.play_sfx(sound.lost_life_sfx)
 		GameManager.health -= 1
 
 
