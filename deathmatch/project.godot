@@ -22,6 +22,7 @@ config/icon="uid://b4jvdvcmjbamo"
 GameManager="*res://Scripts/Managers/GameManager.tscn"
 ConfigFileHandler="*res://Scripts/Managers/ConfigFileHandler.tscn"
 AudioManager="*res://Scripts/Managers/SoundManager/AudioManager.tscn"
+SaveLoad="*res://save_load.gd"
 
 [display]
 

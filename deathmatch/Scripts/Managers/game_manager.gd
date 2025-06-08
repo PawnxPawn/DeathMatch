@@ -67,7 +67,7 @@ var get_game_difficulty: StringName:
 			_:
 				return &"ERROR"
 
-var high_score:int
+var high_score:int = 0
 
 
 func _ready() -> void:
@@ -92,6 +92,7 @@ func reset_game() -> void:
 func end_game(has_won:bool) -> void:
 	has_won_game = has_won
 	high_score = score if score > high_score else high_score
+	SaveLoad.save_score()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if (!has_won):
 		death_timer.start()

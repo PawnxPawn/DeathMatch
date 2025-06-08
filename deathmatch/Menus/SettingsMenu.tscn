@@ -18,7 +18,7 @@ script = ExtResource("1_8x3wo")
 selector = NodePath("Selector")
 volume_sliders = {
 "master_volume": NodePath("PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider"),
-"music_volume": NodePath("")
+"music_volume": null
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]

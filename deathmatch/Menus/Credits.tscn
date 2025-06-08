@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvcy6tqectio2"]
+[gd_scene load_steps=7 format=3 uid="uid://bvcy6tqectio2"]
 
 [ext_resource type="Script" uid="uid://ddvac7tf3n47x" path="res://Menus/credits.gd" id="1_lw8m3"]
 [ext_resource type="FontFile" uid="uid://dm0dxsqey34lo" path="res://Assets/Font/PublicPixel.otf" id="2_lw8m3"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7jex"]
 bg_color = Color(0, 0, 0, 0.435294)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6n7f"]
+font = ExtResource("2_lw8m3")
 
 [sub_resource type="LabelSettings" id="LabelSettings_lw8m3"]
 font = ExtResource("2_lw8m3")
@@ -36,6 +39,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d7jex")
+
+[node name="HighScore" type="Label" parent="CreditsPanel"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 504.0
+offset_right = 383.0
+offset_bottom = 527.0
+text = "High Score:"
+label_settings = SubResource("LabelSettings_m6n7f")
+
+[node name="CreditsHighScore" type="Label" parent="CreditsPanel/HighScore"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 59.0
+offset_top = 23.0
+offset_right = 107.0
+offset_bottom = 46.0
+text = "000"
+label_settings = SubResource("LabelSettings_m6n7f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel"]
 layout_mode = 1
